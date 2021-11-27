@@ -1,0 +1,38 @@
+.about-container {
+  min-height: 100vh;
+  font-size: 15px;
+  font-family: PingFang SC;
+  font-weight: 400;
+  color: #000000;
+  background-color: #f5f4fa;
+  padding: 12px;
+  box-sizing: border-box;
+  .about-header {
+    height: 159px;
+    text-align: center;
+    padding-top: 37px;
+    .logo {
+      width: 64px;
+      height: 64px;
+    }
+    &-version {
+      margin-top: 20px;
+    }
+  }
+  .about-list-box {
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 6px 16px;
+    box-sizing: border-box;
+    .about-list-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 55px;
+      border-bottom: 1px solid rgba(243, 243, 243, 1);
+      &:last-child {
+        border-bottom: none;
+      }
+    }
+  }
+}
