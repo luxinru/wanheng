@@ -10,22 +10,8 @@
 				<span class="login" @click="handleLogin()">登录</span>
 				<span class="regist">手机号注册</span>
 			</div> -->
-    <div class="login_title">
-      <!-- <div class="login_title_top">
-        <img
-          src="./images/logo.png"
-          style="width: 38px; height: 38px"
-          class="icon"
-        />
-        <p class="title">鑫阳APP</p>
-      </div>
-      <div class="login_title_top" style="margin-top: 12px; font-size: 16px">
-        <span>因为专业</span>
-        <span>所以放心</span>
-      </div> -->
-      <span>账户注册</span>
-    </div>
     <div class="register-box">
+      <img class="img" src="@/assets/images/椭圆3拷贝@2x.png" alt="" />
       <!-- <div class="item" style="display:none;">
 					<div class="left">国家/地区</div>
 					<div class="right" @click="handleSelectArea">
@@ -34,18 +20,18 @@
 					</div>
 				</div> -->
       <div class="item">
-        <div class="left">手机号码</div>
+        <div class="left">手机号码:</div>
         <!-- <img src="./images/xg/mobile.png" /> -->
         <input type="number" v-model="data.mobile" placeholder="手机号码" />
       </div>
       <div class="item npasswd">
-        <div class="left">密码</div>
+        <div class="left">密码:</div>
         <!-- <img src="./images/xg/pwd.png" /> -->
         <input type="password" v-model="data.password" placeholder="密码" />
         <!-- <input type="password" v-model="data.spassword" placeholder="请再次输入"> -->
       </div>
       <div class="item npasswd2">
-        <!-- <div class="left">密码</div> -->
+        <div class="left">确认密码:</div>
         <!-- <img src="./images/xg/pwd.png" /> -->
         <!-- <input type="password" v-model="data.password" placeholder="请输入密码"> -->
         <input
@@ -59,7 +45,7 @@
 					<input type="password" v-model="data.spassword" placeholder="请再次确认密码">
 				</div> -->
       <div class="item">
-        <div class="left">验证码</div>
+        <div class="left">验证码:</div>
         <!-- <img src="./images/xg/code.png" /> -->
         <div class="code-btn-cont">
           <input v-model="data.code" placeholder="验证码" />

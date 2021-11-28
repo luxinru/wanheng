@@ -71,13 +71,14 @@ export default new Router({
     {
       path: '/register',
       name: 'register',
-      meta: { title: '注册', hiddenTitle: true },
+      meta: { title: '注册' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/register.vue')
     },
     {
       path: '/forgetpwd',
       name: 'forgetpwd',
+      meta: { title: '修改登陆密码' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/forgetpwd.vue')
     },

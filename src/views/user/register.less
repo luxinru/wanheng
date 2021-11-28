@@ -1,10 +1,11 @@
 .register-container {
-  background-image: url('./images/sf/bg-登录注册@2x.png');
-  background-size: 100%;
-  background-repeat: no-repeat;
-  min-height: 100vh;
+  height: 100%;
   background-color: white;
   font-family: PingFang SC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   // padding-bottom: 21px;
   //   padding-top: 111px;
   .back {
@@ -12,6 +13,7 @@
     height: 15px;
     margin-left: 24px;
   }
+
   .title {
     font-size: 23px;
     font-weight: bold;
@@ -19,111 +21,102 @@
     text-align: center;
     // margin-top: 55px;
   }
+
   .register-box {
+    position: relative;
+    width: 100%;
     padding: 0 12px;
-    margin-top: 34px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 50px auto;
+    }
+
     .item {
-      // border-bottom: 1px  solid #E5E6E8;
-      // background: #EDEEF5;
-      // border-radius: 26px;
       display: flex;
-      flex-direction: column;
-      // padding-top: 22px;
-      // padding-bottom: 20px;
-      // border-bottom: 1px solid #e4e4e4;
-      // &:first-child{
-      //     justify-content: space-between;
-      // }
-      margin-top: 12px;
-      padding: 16px 0;
-      // background-color: #EDEEF5;
-      // border-radius: 26px;
-      // display: flex;
-      // align-items: center;
-      // padding-top: 22px;
-      // padding-bottom: 20px;
-      // border-bottom: 1px solid #e4e4e4;
-      // &:first-child{
-      //     justify-content: space-between;
-      // }
-      // &:nth-of-type(5){
-      //     padding: 0;
-      //     .right{
-      //         width: 100%;
-      //         justify-content: space-between;
-      //         input{
-      //             width: 120px;
-      //         }
-      //         .code-btn{
-      //             font-size: 12px;
-      //             color: #fff;
-      //             width: 87px;
-      //             height: 57px;
-      //             line-height: 57px;
-      //             background: linear-gradient(-90deg, #212c67, #212c67);
-      //             background-size: 100%;
-      //             background-repeat: no-repeat;
-      //             text-align: center;
-      //         }
-      //     }
-      // }
-      .left {
-        // width: 0px;
-        // display: none;
-        // flex-shrink: 0;
-        font-size: 15px;
-        font-weight: 500;
-        color: #aaaaaa;
+      align-items: center;
+      width: 280px;
+      height: 37px;
+      border: 1px solid rgba(214, 214, 214, 0.5);
+      border-radius: 3px;
+      padding: 0 6px;
+      margin-top: 16px;
+
+      &:first-child {
+        margin-top: 0;
       }
+
+      .left {
+        width: 60px;
+        flex-shrink: 0;
+        font-size: 14px;
+        font-weight: 400;
+        color: #464646;
+        line-height: 14px;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
       img {
         width: 15px;
         height: 21px;
         margin-right: 18px;
         flex-shrink: 0;
       }
+
       input {
-        background-color: #f1f1f4;
+        // font-size: 16px;
+        // font-weight: 500;
+        // color: #B1B4BA;
+        // background-color: transparent;
+        background-color: rgba(244, 244, 244, 1);
         border-radius: 13px;
         width: 100%;
-        padding: 12px;
+        height: 100%;
         font-size: 16px;
         font-weight: 400;
         color: #333333;
         opacity: 0.4;
-        margin-top: 10px;
+        margin-left: 16px;
       }
-      &:nth-child(4) {
-        padding: 11px 0;
-        img {
-          width: 15px;
-          height: 16px;
+
+      .code-btn-cont {
+        display: flex;
+        align-items: center;
+
+        input {
+          flex: 1 0;
         }
-        .code-btn-cont {
-          width: 100%;
+
+        .code-btn {
+          // line-height: 57px;
+          // color: #fff;
+          flex-shrink: 0;
+          // width: 123px;
+          // height: 47px;
+          text-align: center;
+          font-size: 15px;
+          font-weight: 400;
+          color: #ffffff;
+          // margin-left: 14px;
           display: flex;
           align-items: center;
-          input {
-            width: 0;
-            flex-grow: 1;
-          }
-          .code-btn {
-            flex-shrink: 0;
-            width: 123px;
-            height: 47px;
-            text-align: center;
-            font-size: 15px;
-            font-weight: 400;
-            color: #ffffff;
-            // margin-left: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: #ff8a35;
-            border-radius: 30px 30px 30px 30px;
-            margin-left: 24px;
-          }
+          justify-content: center;
+          background: #ff8a35;
+          // border-radius: 30px 30px 30px 30px;
+          // margin-left: 24px;
+          padding: 2px 4px;
+          border-radius: 8px;
         }
       }
+
       &:nth-child(5) {
         img {
           width: 15px;
@@ -131,20 +124,8 @@
         }
       }
     }
-
-    .npasswd {
-        padding: 0;
-        margin-top: 0;
-        margin-top: 16px;
-      }
-    
-      .npasswd2 {
-        padding: 0;
-        margin-top: 0;
-        margin-bottom: 16px;
-      }
   }
-  
+
   .login_title {
     width: 100%;
     // margin:0 auto;
@@ -158,24 +139,25 @@
     font-weight: 500;
     color: #ff8a35;
   }
+
   .login_title_top {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
   }
+
   .register-btn {
-    width: calc(100% - 24px);
-    line-height: 52px;
-    background: rgba(255, 138, 53, 1);
-    border-radius: 26px;
-    text-align: center;
-    margin-top: 32px;
-    margin-left: 12px;
-    font-size: 16px;
-    font-weight: 500;
+    margin-top: 24px;
     color: #ffffff;
+    background: RGBA(221, 153, 93, 1);
+    border-radius: 8px;
+    box-sizing: border-box;
+    padding: 7px 5px;
+    font-size: 14px;
+    font-weight: 400;
   }
+
   .login-btn {
     width: 100%;
     display: flex;
@@ -186,6 +168,7 @@
     color: #FF8A35;
     margin: 12px 0 90px 0;
   }
+
   .register-footer {
     font-size: 12px;
     font-weight: 400;
@@ -194,10 +177,12 @@
     display: flex;
     justify-content: center;
     margin-top: 30px;
+
     .footer-link {
       text-decoration: underline;
     }
   }
+
   // .slogan{
   //     padding-top: 100px;
   //     padding-left: 14px;

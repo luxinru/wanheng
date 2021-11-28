@@ -3,20 +3,23 @@
     <keep-alive>
       <div class="header" v-if="currentPath && title">
         <div class="head" :style="(background ? `background: ${background};` : '') + (color ? `color: ${color};` : '')">
-          <van-icon
+          <div>
+            <van-icon
             name="arrow-left"
             class="left"
             size="23"
-            :color="color ? color : '#fff'"
+            :color="color ? color : 'rgba(70, 70, 70, 1)'"
             @click="handleBack"
           />
+          </div>
+          
           <!--<router-link :to="path" class="back"></router-link>-->
           <div>{{ title }}</div>
           <div></div>
         </div>
       </div>
     </keep-alive>
-    <div style="height: 100vh">
+    <div style="height: calc(100vh - 50px);">
       <router-view></router-view>
     </div>
     <div class="footer_nav" v-if="show_footer && footer_type === 'n2'">

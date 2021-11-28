@@ -2,7 +2,6 @@
   <div class="main">
     <!-- <div class="login-header">
             <div class="back" @click="$router.back()"><van-icon name="arrow-left" size="18" color="#fff"/></div> -->
-    <p class="title">修改密码</p>
     <!-- <div class="slogan">
                 <p class="welcome">欢迎加入我们</p>
                 <p class="login-info">请填写以下修改信息。</p>
@@ -24,8 +23,9 @@
       </div>
     </div> -->
     <div class="forget-cont">
+      <img class="img" src="@/assets/images/椭圆3拷贝@2x.png" alt="" />
       <div class="item">
-        <div class="left">手机号码</div>
+        <div class="left">手机号码:</div>
         <!-- <img src="./images/xg/mobile.png" /> -->
         <input
           class="right"
@@ -34,8 +34,8 @@
           placeholder="请输入手机号码"
         />
       </div>
-      <div class="item npasswd">
-        <div class="left">密码</div>
+      <div class="item">
+        <div class="left">新的密码:</div>
         <!-- <img src="./images/xg/pwd.png" /> -->
         <input
           class="right"
@@ -45,8 +45,8 @@
         />
         <!-- <input class="right" v-model.trim="data.npasswd" type="password" placeholder="请再次输入"> -->
       </div>
-      <div class="item npasswd2">
-        <!-- <div class="left">密码</div> -->
+      <div class="item">
+        <div class="left">确认密码:</div>
         <!-- <img src="./images/xg/pwd.png" /> -->
         <!-- <input class="right" v-model.trim="data.passwd" type="password" placeholder="请输入密码"> -->
         <input
@@ -61,7 +61,7 @@
                 <input class="right" v-model.trim="data.npasswd" type="password" placeholder="请再次确认密码">
             </div> -->
       <div class="item">
-        <div class="left">验证码</div>
+        <div class="left">验证码:</div>
         <!-- <img src="./images/xg/code.png" /> -->
         <div class="right-cont">
           <input
@@ -73,14 +73,14 @@
           <div class="right-right" @click="sendcode">
             <van-count-down :time="time" @finish="timeCall">
               <template v-slot="timeData">{{
-                time > 0 ? timeData.seconds : '获取验证码'
+                time > 0 ? timeData.seconds : "获取验证码"
               }}</template>
             </van-count-down>
           </div>
         </div>
       </div>
     </div>
-    <div class="submit-btn" @click="handleSubmit">立即修改</div>
+    <div class="submit-btn" @click="handleSubmit">确认修改</div>
     <!-- <span class="change-pwd">修改密码</span> -->
     <!-- <div class="login-cont">
             <div class="item"> -->
@@ -159,101 +159,101 @@
 </template>
 
 <script>
-import Vue from 'vue'
-import Fetch from '../../utils/fetch'
-import { CountDown } from 'vant'
+import Vue from "vue";
+import Fetch from "../../utils/fetch";
+import { CountDown } from "vant";
 
-Vue.use(CountDown)
+Vue.use(CountDown);
 
 export default {
-  name: 'index',
+  name: "index",
   data() {
     return {
-      bg: '',
+      bg: "",
       data: {},
-      base64Image: '',
+      base64Image: "",
       time: 0,
       is_send: false,
-    }
+    };
   },
   created() {
-    this.$parent.footer(false)
+    this.$parent.footer(false);
   },
   mounted() {
-    this.start()
+    this.start();
   },
   methods: {
     start() {
-      Fetch('/index/webconfig', { type: 'bg' }).then((res) => {
-        this.bg = 'url("' + res.data.forget + '")'
-      })
+      Fetch("/index/webconfig", { type: "bg" }).then((res) => {
+        this.bg = 'url("' + res.data.forget + '")';
+      });
     },
     timeCall() {
-      this.is_send = false
-      this.time = 0
+      this.is_send = false;
+      this.time = 0;
     },
     sendcode() {
       if (this.is_send) {
-        return
+        return;
       }
 
       if (!this.data.mobile) {
-        this.$notify('请输入手机号')
-        return
+        this.$notify("请输入手机号");
+        return;
       }
 
-      this.is_send = true
-      Fetch('/index/code', {
-        type: 'forgetpwd',
+      this.is_send = true;
+      Fetch("/index/code", {
+        type: "forgetpwd",
         mobile: this.data.mobile,
       })
         .then(() => {
-          this.time += 60 * 1000
+          this.time += 60 * 1000;
           this.$notify({
-            background: '#07c160',
-            message: '发送成功',
-          })
+            background: "#07c160",
+            message: "发送成功",
+          });
         })
         .catch(() => {
-          this.is_send = false
-        })
+          this.is_send = false;
+        });
     },
     handleSubmit() {
       if (!this.data.mobile) {
-        this.$notify('请输入您的手机号')
-        return
+        this.$notify("请输入您的手机号");
+        return;
       }
 
       if (!this.data.passwd) {
-        this.$notify('请输入新密码')
-        return
+        this.$notify("请输入新密码");
+        return;
       }
 
       if (this.data.passwd !== this.data.npasswd) {
-        this.$notify('两次密码不一致')
-        return
+        this.$notify("两次密码不一致");
+        return;
       }
 
-      Fetch('/index/forgetpwd', {
-        type: 'forgetpwd',
+      Fetch("/index/forgetpwd", {
+        type: "forgetpwd",
         phone: this.data.mobile,
         password: this.data.passwd,
         code: this.data.code,
       })
         .then(() => {
           this.$notify({
-            background: '#07c160',
-            message: '修改成功',
-          })
+            background: "#07c160",
+            message: "修改成功",
+          });
         })
         .then(() => {
           this.$router.replace({
-            path: this.$router.history.current.query.redirect || '/',
-          })
-        })
+            path: this.$router.history.current.query.redirect || "/",
+          });
+        });
     },
   },
-}
+};
 </script>
 
 <style lang="less" scoped>
@@ -271,33 +271,21 @@ export default {
   justify-content: space-between;
 }
 .main {
-  background-image: url('./images/sf/bg-登录注册@2x.png');
   background-size: 100%;
   background-repeat: no-repeat;
-  min-height: 100vh;
+  height: 100%;
   background-color: white;
   font-family: PingFang SC;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   // padding-bottom: 21px;
-//   padding-top: 111px;
+  //   padding-top: 111px;
   .back {
     width: 8px;
     height: 15px;
     margin-left: 24px;
     // margin-top: 32px;
-  }
-  .title {
-    width: 100%;
-    // margin:0 auto;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    padding: 100px 0 0 12px;
-    box-sizing: border-box;
-    font-size: 28px;
-    font-family: PingFang SC-Medium, PingFang SC;
-    font-weight: 500;
-    color: #ff8a35;
-    // margin-top: 55px;
   }
   // .login-header{
   //     // background-image: url('./images/juchuan_iocn.png');
@@ -351,26 +339,44 @@ export default {
     // padding: 0 13px;
     // color: #2E2F31;
     // font-size: 15px;
+    position: relative;
+    width: 100%;
     padding: 0 12px;
-    margin-top: 44px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .img {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      margin: 50px auto;
+    }
     .item {
-    //   margin-top: 13px;
+      //   margin-top: 13px;
       display: flex;
-      flex-direction: column;
-      padding: 16px 0;
-    //   border-bottom: 1px solid #e5e6e8;
-      // background-color: #EDEEF5;
-      // border-radius: 26px;
-      // padding-top: 22px;
-      // padding-bottom: 20px;
-      // border-bottom: 1px solid #e4e4e4;
-      // &:last-child{
-      //     padding: 0;
-      // }
-      .left{
-          font-size: 15px;
-          font-weight: 500;
-          color: #AAAAAA;
+      align-items: center;
+      width: 280px;
+      height: 37px;
+      border: 1px solid rgba(214, 214, 214, 0.5);
+      border-radius: 3px;
+      padding: 0 6px;
+      margin-top: 16px;
+      &:first-child {
+        margin-top: 0;
+      }
+      .left {
+        width: 60px;
+        flex-shrink: 0;
+        font-size: 14px;
+        font-weight: 400;
+        color: #464646;
+        line-height: 14px;
+        text-align: right;
+      }
+
+      .right {
+        height: 100%;
       }
       img {
         width: 15px;
@@ -387,28 +393,26 @@ export default {
         border-radius: 13px;
         width: 100%;
         height: 47px;
-        padding: 12px;
         font-size: 16px;
         font-weight: 400;
         color: #333333;
         opacity: 0.4;
-        margin-top: 10px;
+        margin-left: 16px;
       }
       &:last-child {
-        padding: 16px 0;
+        // padding: 16px 0;
         img {
           width: 15px;
           height: 16px;
         }
         .right-cont {
-          width: 100%;
           display: flex;
           justify-content: space-between;
           align-items: center;
           // margin-top: 18px;
           .right-left {
             // width: 80px;
-            width: 100%;
+            // width: 100%;
             // margin-top: 0;
           }
           .right-right {
@@ -422,12 +426,13 @@ export default {
             // box-shadow: 0px 0px 13px 0px rgba(0, 4, 26, 0.05);
             // font-size: 12px;
             // font-weight: 500;
+            flex-shrink: 0;
             div {
               // line-height: 57px;
               // color: #fff;
               flex-shrink: 0;
-              width: 123px;
-              height: 47px;
+              // width: 123px;
+              // height: 47px;
               text-align: center;
               font-size: 15px;
               font-weight: 400;
@@ -436,39 +441,26 @@ export default {
               display: flex;
               align-items: center;
               justify-content: center;
-              background: #FF8A35;
-              border-radius: 30px 30px 30px 30px;
-              margin-left: 24px;
+              background: #ff8a35;
+              // border-radius: 30px 30px 30px 30px;
+              // margin-left: 24px;
+              padding: 2px 4px;
+              border-radius: 8px;
             }
           }
         }
       }
     }
-
-    .npasswd {
-      padding: 0;
-      margin-top: 16px;
-    }
-
-    .npasswd2 {
-      padding: 0;
-      margin-bottom: 16px;
-    }
   }
   .submit-btn {
-    width: calc(100% - 24px);
-    line-height: 52px;
     margin-top: 24px;
-    margin-left: 12px;
-    text-align: center;
-    font-size: 16px;
-    font-weight: 500;
     color: #ffffff;
-
-    height: 49px;
-    background: #FF8A35;
-    border-radius: 27px 27px 27px 27px;
+    background: RGBA(221, 153, 93, 1);
+    border-radius: 8px;
     box-sizing: border-box;
+    padding: 7px 5px;
+    font-size: 14px;
+    font-weight: 400;
   }
   // .change-pwd{
   //     font-weight: bold;

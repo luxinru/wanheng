@@ -1,38 +1,9 @@
 <template>
   <div class="login-container">
-    <!-- <div class="slogan">
-			<p class="welcome">欢迎加入我们</p>
-			<p class="login-info">请填写以下登陆信息。</p>
-		</div> -->
-    <!-- <div class="login-header"> -->
-    <!-- <div class="login-header-title">
-				<span class="login">登录</span>
-				<span class="regist" @click="handleGoRegister">手机号注册</span>
-			</div> -->
-    <div class="login_title">
-      <!-- <div class="login_title_top">
-        <img
-          src="./images/logo.png"
-          style="width: 38px; height: 38px"
-          class="icon"
-        />
-        <p class="title">鑫阳APP</p>
-      </div>
-      <div class="login_title_top" style="margin-top: 12px; font-size: 16px">
-        <span>因为专业</span>
-        <span>所以放心</span>
-      </div> -->
-      <span>手机登录</span>
-    </div>
-
     <div class="login-box">
-      <!-- <div class="item" style="display:none;">
-				<div class="left">国家/地区</div>
-				<div class="right" @click="handleSelectArea">
-					<span>{{data.telAddress}}</span>
-					<van-icon name="arrow" size="18" color="#A8A8A8"/>
-				</div>
-			</div> -->
+
+      <img class="img" src="@/assets/images/椭圆3拷贝@2x.png" alt="" />
+
       <div class="item">
         <div class="left">手机号码</div>
         <!-- <img src="./images/xg/mobile.png" /> -->
