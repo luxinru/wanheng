@@ -1,15 +1,11 @@
 <template>
   <div class="index-container">
-    <div class="header-title">任务</div>
-    <div class="header-cont">
-      <div class="left">
-        <div class="header-cont-text">我的金币</div>
-        <div class="header-cont-number">{{ data.integral || 0 }}</div>
-      </div>
-      <img src="~@/assets/images/任务_slices/金币-大@2x.png" alt="" />
+    <div class="header-cont" @click="$router.push('mission')">
+      <span>我的积分</span>
+      <span>{{ data.integral || 0 }}</span>
     </div>
 
-    <div class="daily-mission">
+    <!-- <div class="daily-mission">
       <div class="title">每日任务</div>
       <div class="content">
         <div class="item" @click="$router.push({ name: 'qiandao' })">
@@ -30,35 +26,16 @@
           <div class="item_btn" style="color: rgba(242, 73, 67, 1)">去邀请</div>
         </div>
       </div>
-    </div>
+    </div> -->
     <div class="index-content">
-      <div class="title">
-        <span></span>
-        更多任务
-      </div>
-      <!-- <div class="task-list-item">
-        <div class="task-list-item-left">
-          <div class="item-icon icon-1"></div>
-          <div class="item-title-box">
-            <div class="item-title">连续打卡</div>
-            <div class="item-sub-title">连续打卡赢奖金</div>
-          </div>
-        </div>
-        <div
-          class="task-list-item-right"
-          :class="{ 'active-btn': mission.qiandao_status }"
-          @click="checkin2()"
-        >
-          {{ mission.qiandao_status ? "已完成" : "去完成" }}
-        </div>
-      </div>
+      
       <div class="task-list-item">
         <div class="task-list-item-left">
-          <div class="item-icon icon-2"></div>
           <div class="item-title-box">
             <div class="item-title">邀请好友</div>
-            <div class="item-sub-title">奖励现金红包</div>
+            <div class="item-sub-title">互得现金红包</div>
           </div>
+          <div class="item-icon icon-2"><span>投资返利</span></div>
         </div>
         <div
           class="task-list-item-right"
@@ -67,32 +44,16 @@
         >
           {{ mission.invest_status == true ? "已完成" : "去完成" }}
         </div>
-      </div> -->
-
-      <div class="task-list-item" v-if="footer_type === 'n2'">
-        <div class="task-list-item-left">
-          <div class="item-icon icon-3"></div>
-          <div class="item-title-box">
-            <div class="item-title">存入宝库</div>
-            <div class="item-sub-title">领取2元红包</div>
-          </div>
-        </div>
-        <div
-          class="task-list-item-right"
-          :class="{ 'active-btn': mission.yue_bao_status == true }"
-          @click="handleTaskListItem(2)"
-        >
-          {{ mission.yue_bao_status == true ? "已完成" : "去完成" }}
-        </div>
       </div>
 
       <div class="task-list-item">
         <div class="task-list-item-left">
-          <div class="item-icon icon-4"></div>
+          
           <div class="item-title-box">
             <div class="item-title">新人认证</div>
-            <div class="item-sub-title">奖励3元红包</div>
+            <div class="item-sub-title">实名认证领红包</div>
           </div>
+          <div class="item-icon icon-4"><span>+2元红包</span></div>
         </div>
         <div
           :class="
@@ -108,24 +69,30 @@
 
       <div class="task-list-item" v-if="footer_type === 'n2'">
         <div class="task-list-item-left">
-          <div class="item-icon icon-5"></div>
+          
           <div class="item-title-box">
-            <div class="item-title">参与投资</div>
-            <div class="item-sub-title">获取海量积分</div>
+            <div class="item-title">存入宝库</div>
+            <div class="item-sub-title">灵活存取收益率高</div>
           </div>
+          <div class="item-icon icon-3"><span>+2元红包</span></div>
         </div>
-        <div class="task-list-item-right" @click="handleTaskListItem(4)">
-          去完成
+        <div
+          class="task-list-item-right"
+          :class="{ 'active-btn': mission.yue_bao_status == true }"
+          @click="handleTaskListItem(2)"
+        >
+          {{ mission.yue_bao_status == true ? "已完成" : "去完成" }}
         </div>
       </div>
 
       <div class="task-list-item">
         <div class="task-list-item-left">
-          <div class="item-icon icon-6"></div>
+          
           <div class="item-title-box">
             <div class="item-title">运动加油</div>
-            <div class="item-sub-title">积分奖励</div>
+            <div class="item-sub-title">每日自律打卡运动奖励</div>
           </div>
+          <div class="item-icon icon-6"><span>积分奖励</span></div>
         </div>
         <div
           class="task-list-item-right"
@@ -135,6 +102,39 @@
           {{ mission.answer_status ? "已完成" : "去完成" }}
         </div>
       </div>
+
+      <div class="task-list-item" v-if="footer_type === 'n2'">
+        <div class="task-list-item-left">
+          
+          <div class="item-title-box">
+            <div class="item-title">参与投资</div>
+            <div class="item-sub-title">返利丰厚</div>
+          </div>
+          <div class="item-icon icon-5"><span>海量积分</span></div>
+        </div>
+        <div class="task-list-item-right" @click="handleTaskListItem(4)">
+          去完成
+        </div>
+      </div>
+
+      <!-- <div class="task-list-item">
+        <div class="task-list-item-left">
+          
+          <div class="item-title-box">
+            <div class="item-title">闯关答题</div>
+            <div class="item-sub-title">现金红包</div>
+          </div>
+          <div class="item-icon icon-1"><span>现金红包</span></div>
+        </div>
+        <div
+          class="task-list-item-right"
+          :class="{ 'active-btn': mission.qiandao_status }"
+          @click="checkin2()"
+        >
+          {{ mission.qiandao_status ? "已完成" : "去完成" }}
+        </div>
+      </div> -->
+
     </div>
   </div>
 </template>

@@ -1,24 +1,27 @@
 <template>
   <div class="page">
-    <div class="headerBox">
-      <div class="header">
-        <div class="head">
-          <van-icon
-            class="iconLeft"
-            name="arrow-left"
-            @click="$router.back()"
-          />
-          <span></span>
-          <div>
-            <!-- <img class="question" src="./image/question.png" alt="" @click="handleGoBaoKugz"> -->
-          </div>
+    <div class="header">
+      <div class="head">
+        <van-icon
+          class="iconLeft"
+          name="arrow-left"
+          color="#fff"
+          @click="$router.back()"
+        />
+        <span>邀友有礼</span>
+        <div>
+          <!-- <img class="question" src="./image/question.png" alt="" @click="handleGoBaoKugz"> -->
         </div>
       </div>
     </div>
 
+    <div class="table_title">
+      <span>推广会员</span>
+      <span>注册时间</span>
+    </div>
+
     <div class="main-cont">
       <!-- <p class="my_invite">我的邀请</p> -->
-      <img src="./images/xg/我的邀请-头部@2x.png" alt="">
       <div class="content">
         <!-- <div class="title">
           <div class="left">推广会员</div>
@@ -26,7 +29,7 @@
         </div> -->
         <div class="item-cont">
           <div class="item" v-for="(item, key) in data.share_user" :key="key">
-            <img src="" alt="">
+            <img src="" alt="" />
             <div class="left">
               <span class="phone">{{ item.phone }}</span>
               <span class="time">{{ item.time }}</span>
@@ -40,11 +43,14 @@
 
     <div class="btn" @click="showShare">立即邀请</div>
 
+    <span class="btn_tip">温馨提示：好友注册时需填写您的手机号哦</span>
+
     <div class="qrcode_box" v-if="is_show_share">
       <div class="content">
         <img :src="data.share_image_url" class="qrcode" />
-        <p class="qrcode_tips">好友扫描以上专属二维码<span>可直接注册</span></p>
-        <div class="qrcode_btn" @click="close">确定</div>
+        <p class="qrcode_tips">扫描二维码，邀请好友加入</p>
+        <div class="qrcode_btn" @click="close">立即邀请</div>
+        <img class="close" src="@/assets/wanheng/邀请有礼_slices/形状 1@2x.png" alt="" @click="is_show_share = false">
       </div>
     </div>
   </div>
@@ -89,8 +95,8 @@ export default {
 <style lang="less" scoped>
 .page {
   width: 100%;
-  height: 812px;
-  background-image: url("./images/xg/bg-邀请好友01@2x.png");
+  height: 667px;
+  background-image: url("~@/assets/wanheng/邀请有礼_slices/组2@2x.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
   border: 1px solid transparent;
@@ -98,7 +104,11 @@ export default {
   font-family: PingFang SC;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: center;
+
+  .header {
+    flex-shrink: 0;
+  }
 
   .head {
     display: flex;
@@ -107,6 +117,7 @@ export default {
     background-color: rgba(0, 0, 0, 0);
     border: none;
     color: #fff;
+    height: 50px;
     .iconLeft {
       position: relative;
       top: 12px;
@@ -114,21 +125,40 @@ export default {
     }
   }
 }
+.table_title {
+  width: 100%;
+  height: 50px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  box-sizing: border-box;
+  span {
+    flex: 1 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: #06789d;
+  }
+}
 .main-cont {
   position: relative;
-  width: 351px;
-  height: 335px;
+  width: calc(100% - 48px);
+  height: 180px;
   background-color: #fff;
   border-radius: 10px;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
-  margin: 341px auto 0;
-  img {
-    width: 351px;
-    height: 26px;
-  }
+  margin: 0 24px;
+  flex-shrink: 0;
   .content {
+    width: 100%;
+    height: 100%;
     overflow: scroll;
     .title {
       font-size: 15px;
@@ -182,7 +212,7 @@ export default {
             font-size: 12px;
             font-family: PingFang SC-Regular, PingFang SC;
             font-weight: 400;
-            color: #B3B3B3;
+            color: #b3b3b3;
             margin-top: 1px;
             display: flex;
             align-items: center;
@@ -193,7 +223,7 @@ export default {
           font-size: 16px;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
-          color: #FF3F3F;
+          color: #ff3f3f;
         }
       }
     }
@@ -201,19 +231,30 @@ export default {
 }
 
 .btn {
-  width: 343px;
-  height: 49px;
-  background: #8A5302 linear-gradient(180deg, #FFE81C 0%, #FFA41C 100%);
-  border-radius: 27px 27px 27px 27px;
+  width: 195px;
+  height: 38px;
+  background: rgba(255, 212, 1, 1);
   box-sizing: border-box;
-  margin: 12px auto;
+  margin-top: 260px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
-  font-family: PingFang SC-Medium, PingFang SC;
-  font-weight: 500;
-  color: #C31E1F;
+  flex-shrink: 0;
+  font-size: 18px;
+  font-weight: bold;
+  color: #fe3b39;
+}
+
+.btn_tip {
+  width: 267px;
+  height: 13px;
+  font-size: 12px;
+  font-weight: 400;
+  color: #ffffff;
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .qrcode_box {
@@ -224,49 +265,45 @@ export default {
   top: 0;
   left: 0;
   z-index: 99;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   .content {
-    width: 294px;
-    height: 420px;
+    width: 330px;
+    height: 208px;
     box-sizing: border-box;
     border-radius: 10px;
-    margin-top: 110px;
-    margin-left: 40px;
-    background-color: white;
-    padding: 30px;
+    background: url('~@/assets/wanheng/邀请有礼_slices/组 1@2x.png');
+    background-size: 100% 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .qrcode {
-      width: 235px;
-      height: 235px;
+      width: 71px;
+      height: 71px;
+      margin-top: 62px;
     }
     .qrcode_tips {
-      width: 100%;
-      margin: 16px 0;
-      display: flex;
-      align-items: center;
-      font-size: 16px;
-      font-family: PingFang SC-Regular, PingFang SC;
-      font-weight: 400;
-      color: #FF8A35;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      flex-direction: column;
-
-      span {
-        margin-top: 4px;
-      }
+      font-size: 15px;
+      font-weight: bold;
+      color: #FFFFFF;
+      line-height: 14px;
+      margin-top: 6px;
+      margin-left: 48px;
     }
     .qrcode_btn {
-      width: 235px;
-      height: 49px;
-      background: #8A5302 linear-gradient(180deg, #FFE81C 0%, #FFA41C 100%);
-      border-radius: 27px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 16px;
-      font-family: PingFang SC-Medium, PingFang SC;
-      font-weight: 500;
-      color: #C31E1F;
+      font-size: 15px;
+      font-weight: bold;
+      color: #FFFFFF;
+      line-height: 13px;
+      margin-top: 28px;
+      margin-left: 36px;
+    }
+
+    .close {
+      width: 24px;
+      height: 24px;
+      margin-top: 24px;
     }
   }
 }

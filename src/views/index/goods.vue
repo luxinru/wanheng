@@ -6,50 +6,32 @@
           <van-icon
             name="arrow-left"
             size="20"
-            color="#ffffff"
+            color="#000"
             style="vertical-align: middle"
           />
         </div>
         <!--<span class="back" @click="$router.push('/tree')"></span>-->
-        <div>金币商城</div>
+        <div>积分商城</div>
         <div></div>
       </div>
     </div>
     <div class="goods-header-box">
-      <div class="left">
-        <span class="label">我的金币</span>
-        <span class="value">
-          {{ mydata.integral }}
-        </span>
+      <div class="item">
+        <img src="@/assets/wanheng/积分商城_slices/组 45@2x.png" alt="">
+        <div>积分<span> {{ mydata.integral }} </span></div>
       </div>
-      <div class="right">
-        <div @click="$router.push('/order')">我的订单</div>
-        <div @click="$router.push('/address')">收货地址</div>
+      <div class="item" @click="$router.push('/order')">
+        <img src="@/assets/wanheng/积分商城_slices/兑换记录@2x.png" alt="">
+        <div>兑换记录</div>
+      </div>
+      <div class="item" @click="$router.push('/address')">
+        <img src="@/assets/wanheng/积分商城_slices/1-30@2x.png" alt="">
+        <div>收货地址</div>
       </div>
     </div>
-    <!-- <div class="goods-content-box">
-      <div class="my-integral-info-box">
 
-        <div class="address-btn-box">
-          <div class="address-btn" @click="$router.push('/qiandao')">
-            <img src="./image/gs1.png" />
-            <p>每日签到</p>
-          </div>
-          <div class="address-btn" @click="$router.push('/address')">
-            <img src="./image/gs2.png" />
-            <p>发货地址</p>
-          </div>
-          <div class="address-btn" @click="$router.push('/integral')">
-            <img src="./image/gs3.png" />
-            <p>积分明细</p>
-          </div>
-          <div class="address-btn" @click="$router.push('/order')">
-            <img src="./image/gs4.png" />
-            <p>我的订单</p>
-          </div>
-        </div>
-      </div>
-    </div> -->
+    <img class="activity" src="@/assets/wanheng/积分商城_slices/立即参与@2x.png" alt="">
+
     <div class="goodsBox">
       <div
         class="qd-list"
@@ -261,6 +243,12 @@ export default {
     color: #cccccc;
   }
 }
+
+.activity {
+  width: 100%;
+  padding: 16px 0 33px;
+  border-bottom: 5px solid rgba(245, 245, 245, 1);
+}
 .goodsBox {
   width: 100%;
   margin-top: 13px;
@@ -335,9 +323,6 @@ export default {
   font-size: 16px;
   padding-bottom: 30px;
   font-family: PingFang SC;
-  background-color: #f5f5f5;
-  background: url(~@/views/index/image/金币商城_slices/bg-金币商城@2x.png);
-  background-size: 100%;
 }
 .header .head {
   position: fixed;
@@ -349,7 +334,7 @@ export default {
   height: 50px;
   text-align: center;
   line-height: 50px;
-  color: #fff;
+  color: #000;
   font-weight: 550;
   font-size: 5vw;
   display: flex;
@@ -372,60 +357,30 @@ export default {
 }
 .goods-header-box {
   width: 100%;
-  height: 63px;
-  margin-top: 56px;
+  margin-top: 39px;
   display: flex;
   align-items: center;
-  padding: 0 12px;
-  box-sizing: border-box;
 
-  .left {
+  .item {
     flex: 1 0;
-    height: 100%;
     display: flex;
     flex-direction: column;
+    align-items: center;
 
-    .label {
-      font-size: 12px;
-      font-family: PingFang SC-Regular, PingFang SC;
-      font-weight: 400;
-      color: #333333;
-      line-height: 14px;
+    img {
+      width: 51px;
+      height: 51px;
     }
-
-    .value {
-      font-size: 35px;
-      font-family: Roboto-Bold, Roboto;
-      font-weight: bold;
-      color: #333333;
-      line-height: 41px;
-      margin-top: 5px;
-    }
-  }
-
-  .right {
-    flex: 1 0;
-    height: 100%;
-    display: flex;
-    align-items: flex-end;
 
     div {
-      width: 79px;
-      height: 35px;
-      border-radius: 30px;
-      border: 1px solid #ff8a35;
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 12px;
-      font-family: PingFang SC-Semibold, PingFang SC;
-      font-weight: 600;
-      color: #ff8a35;
-      line-height: 14px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #333333;
+      margin-top: 9px;
 
-      &:last-child {
-        margin-left: 7px;
+      span {
+        color: rgba(245, 100, 100, 1);
+        margin-left: 4px;
       }
     }
   }

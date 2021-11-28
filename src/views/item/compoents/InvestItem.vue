@@ -1,33 +1,32 @@
 <template>
   <div class="project-item-container">
     <div class="project-img-box">
-      <img :src="investInfo.thumb" alt="" />
+      <!-- <img :src="investInfo.thumb" alt="" /> -->
       <div class="content">
         <div class="project-name">{{ investInfo.title }}</div>
         <div class="project-tag-box">
           <div class="project-tag-item">{{ investInfo.type_name }}</div>
           <div class="project-tag-item">{{ investInfo.min }}起投</div>
         </div>
-        <div class="qx">
+        <!-- <div class="qx">
           <span>投资期限：</span>
           <span>{{ investInfo.day }}(天)</span>
         </div>
         <div class="qx">
           <span>项目规模：</span>
           <span>{{ investInfo.total }}万元</span>
-        </div>
+        </div> -->
       </div>
     </div>
 
-    <div class="project-progress-warp">
+    <!-- <div class="project-progress-warp">
       <div class="project-progress-box">
         <div
           class="project-progress"
           :style="schedule(investInfo.schedule)"
         ></div>
       </div>
-      <!-- <div class="progress-value">{{investInfo.schedule}}%</div> -->
-    </div>
+    </div> -->
 
     <div class="project-info-list">
       <div class="project-info-list-item">
@@ -46,7 +45,8 @@
       </div>
     </div>
 
-    <div class="project-btn">立即投资</div>
+    <!-- <div class="project-btn">立即投资</div> -->
+    <div class="line"></div>
   </div>
 </template>
 <script>
@@ -81,8 +81,8 @@ export default {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  padding: 16px;
   box-sizing: border-box;
+  padding-bottom: 29px;
   .project-img-box {
     width: 100%;
     display: flex;
@@ -103,35 +103,29 @@ export default {
       overflow: hidden;
 
       .project-name {
-        margin: 2px 0;
-        font-size: 16px;
-        font-family: PingFang SC-Medium, PingFang SC;
-        font-weight: 500;
-        color: #333333;
-        display: flex;
-        align-items: center;
-        white-space: wrap;
+        font-size: 21px;
+        font-weight: normal;
+        color: #24252D;
+        margin: 16px 0 0 16px;
       }
 
       .project-tag-box {
         display: flex;
         align-items: center;
+        margin: 7px 0 0 16px;
 
         .project-tag-item {
-          margin: 2px 0;
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          padding: 2px 4px;
-          background: #ffebdd;
-          border-radius: 5px;
-          font-size: 10px;
-          font-family: PingFang SC-Regular, PingFang SC;
+          font-size: 13px;
           font-weight: 400;
-          color: #ff8a35;
-          margin-left: 10px;
+          color: #FF950B;
+          // margin-left: 2px;
+          padding: 6px 7px;
+          box-sizing: border-box;
           &:first-child {
             margin-left: 0;
+            background: linear-gradient(90deg, #FE9B07, #FEC305);
+            border-radius: 12px;
+            color: rgba(255, 255, 255, 1);
           }
         }
       }
@@ -185,38 +179,31 @@ export default {
 
   .project-info-list {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
     width: 100%;
-    height: 63px;
     background: rgba(246, 246, 246, 1);
+    margin-top: 29px;
 
     &-item {
       flex: 1 0;
       display: flex;
       flex-direction: column;
-      &-top {
-        width: 100%;
-        height: 25px;
-        font-size: 18px;
-        font-family: PingFang SC-Semibold, PingFang SC;
-        font-weight: 600;
-        color: #ff8a35;
+      &-bottom {
+        font-size: 15px;
+        font-weight: 400;
+        color: #707070;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
       }
 
-      &-bottom {
-        width: 100%;
-        height: 14px;
-        font-size: 10px;
-        font-family: PingFang SC-Regular, PingFang SC;
-        font-weight: 400;
-        color: #b3b3b3;
+      &-top {
+        font-size: 20px;
+        font-weight: normal;
+        color: #B14503;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
+        margin-top: 16px;
       }
     }
   }

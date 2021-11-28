@@ -90,6 +90,13 @@ export default new Router({
         import(/* webpackChunkName: "home" */ './views/user/index2.vue')
     },
     {
+      path: '/shiping',
+      name: 'shiping',
+      meta: { title: '视频有礼', hiddenTitle: true },
+      component: () =>
+        import(/* webpackChunkName: "home" */ './views/user/shiping.vue')
+    },
+    {
       path: '/transfer',
       name: 'transfer',
       meta: { title: '银行汇款', background: '#fff', color: '#000' },
@@ -165,6 +172,13 @@ export default new Router({
       meta: { title: '看图猜谜' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/anwser/start.vue')
+    },
+    {
+      path: '/vip',
+      name: 'vip',
+      meta: { title: 'vip等级', hiddenTitle: true },
+      component: () =>
+        import(/* webpackChunkName: "home" */ './views/user/vip.vue')
     },
     {
       path: '/anwser',
@@ -485,6 +499,20 @@ export default new Router({
       meta: { title: '我的宝库', hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/index/baoku.vue')
+    },
+    {
+      path: '/baoku_in',
+      name: 'baoku_in',
+      meta: { title: '我的宝库', hiddenTitle: true },
+      component: () =>
+        import(/* webpackChunkName: "home" */ './views/index/baoku_in.vue')
+    },
+    {
+      path: '/baoku_out',
+      name: 'baoku_out',
+      meta: { title: '我的宝库', hiddenTitle: true },
+      component: () =>
+        import(/* webpackChunkName: "home" */ './views/index/baoku_out.vue')
     },
     {
       path: '/baokugz',

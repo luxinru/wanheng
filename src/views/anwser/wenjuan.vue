@@ -6,9 +6,10 @@
           <van-icon
             class="iconLeft"
             name="arrow-left"
+            color="#fff"
             @click="$router.back()"
           />
-          <span>PK</span>
+          <span>趣味问答</span>
           <div>
             <!-- <img class="question" src="./image/question.png" alt="" @click="handleGoBaoKugz"> -->
           </div>
@@ -16,62 +17,28 @@
       </div>
     </div>
 
-    <!-- <section class="user_info">
-      <img src="@/assets/images/闯关答题_slices/王者@2x.png" alt="" />
-      <div class="info">
-        <span class="name">新手村少侠</span>
-      </div>
-    </section>
+    <div class="mt3">
+      <van-count-down class="mm" :time="data.m" @finish="stop" ref="countDown">
+        <template v-slot="timeData">
+          <span class="value">答题倒计时：{{ timeData.seconds }}秒</span>
+        </template>
+      </van-count-down>
+    </div>
 
-    <section class="info_box">
-      <div class="item">
-        <span class="label">正确率</span>
-        <span class="value">20%</span>
-      </div>
-      <div class="item">
-        <span class="label">奖励</span>
-        <span class="value">100枚+1.00</span>
-      </div>
-    </section> -->
+    <div class="rule_title">{{ data.title }}</div>
 
-    <div class="main">
-      <!-- <div style="text-align: center;" ><img class="logo" src="./image/wenjuan.png" alt=""></div>         -->
-      <!-- <div class="tips">
-            欢迎参加学霸奖金挑战游戏，挑战成功将会立即获得现金红包，一秒到账支付宝账户，百万奖金等你来！
-        </div> -->
-      <div class="rule_box">
-        <div class="mt3">
-          <van-count-down
-            class="mm"
-            :time="data.m"
-            @finish="stop"
-            ref="countDown"
-          >
-            <template v-slot="timeData">
-              <span class="value">答题倒计时：{{ timeData.seconds }}秒</span>
-            </template>
-          </van-count-down>
-        </div>
-        <div class="rule_title">{{ data.title }}</div>
-        <div class="rule_info_box">
-          <div
-            ref="anwser"
-            class="anwser_item"
-            v-for="(v, k) in data.values"
-            :key="k"
-            @click="apply(v.id, $event)"
-          >
-            {{ v.value }}
-          </div>
+    <div class="rule_box">
+      <div class="rule_info_box">
+        <div
+          ref="anwser"
+          class="anwser_item"
+          v-for="(v, k) in data.values"
+          :key="k"
+          @click="apply(v.id, $event)"
+        >
+          {{ v.value }}
         </div>
       </div>
-
-      <!-- <div class="tips">
-        本次闯关正确率达到90%,即通关成功 通关成功可获取100金币
-        ＋1.00余额＋0.18现金 本题挑战奖励：5金币 ＋0.00余
-      </div> -->
-
-      <!-- <div class="btn" @click="show1 = true">下一题（28）</div> -->
     </div>
 
     <!-- 弹窗 -->
@@ -173,7 +140,7 @@ export default {
     },
     apply(key, event) {
       this.setStyle();
-      event.target.style.background = "rgba(14, 10, 107, 1)";
+      event.target.style.background = "rgba(0, 101, 225, 1)";
       event.target.style.color = "rgba(255, 255, 255, 1)";
       this.stop(key);
     },
@@ -229,7 +196,8 @@ export default {
 }
 .wenjuanBox {
   height: 812px;
-  background: url("~@/assets/images/闯关答题_slices/25@2x.png") no-repeat;
+  background: url("~@/assets/wanheng/知识问答_slices/答题赢好礼@2x.png")
+    no-repeat;
   background-size: 100%;
   display: flex;
   flex-direction: column;
@@ -314,70 +282,65 @@ export default {
     }
   }
 }
+
+.mt3 {
+  width: 191;
+  margin: 190px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .value {
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    line-height: 23px;
+    text-shadow: 1px 2px 3px rgba(76, 44, 0, 0.75);
+  }
+}
+
+.rule_title {
+  width: 100%;
+  height: 100px;
+  padding: 0 66px;
+  font-size: 17px;
+  font-weight: 400;
+  color: #fff;
+  word-break: break-all;
+  margin: 18px 0;
+}
+
+.rule_box {
+  width: 324px;
+  border-radius: 10px;
+  border-radius: 7px;
+  padding: 0 34px 58px;
+  box-sizing: border-box;
+  margin: 60px auto 0;
+  .rule_info_box {
+    margin-top: 20px;
+    .anwser_item {
+      width: 100%;
+      height: 44px;
+      background: rgba(0, 101, 225, 0.15);
+      border-radius: 22px;
+      font-size: 16px;
+      font-family: Source Han Sans CN;
+      font-weight: 400;
+      color: rgba(14, 10, 107, 1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+      box-sizing: border-box;
+    }
+  }
+}
 .main {
   margin-top: 344px;
   display: flex;
   flex-direction: column;
   width: 100%;
-  .mt3 {
-    width: 191;
-    height: 50px;
-    margin: 9px auto 0;
-    background: url(~@/assets/images/闯关答题_slices/80@2x.png) no-repeat;
-    background-size: 100% 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    .value {
-      font-size: 15px;
-      font-family: Source Han Sans CN;
-      font-weight: bold;
-      color: #2A56EC;
-      line-height: 31px;
-      // text-shadow: 0px 1px 1px #F6E6CE, 0px 2px 1px #F6E6CE;
-
-      background: linear-gradient(180deg, #A56205 50%, #381302 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  }
-  .rule_box {
-    width: 324px;
-    background: #ffffff;
-    border-radius: 10px;
-    border-radius: 7px;
-    padding: 0 34px 58px;
-    box-sizing: border-box;
-    margin: 0 auto 0;
-    .rule_title {
-      width: 100%;
-      font-size: 17px;
-      font-family: Source Han Sans CN;
-      font-weight: 400;
-      color: #0E0A6B;
-      word-break: break-all;
-      margin: 18px 0;
-    }
-    .rule_info_box {
-      margin-top: 20px;
-      .anwser_item {
-        width: 100%;
-        height: 44px;
-        background: rgba(14, 10, 107, 0.15);
-        border-radius: 22px;
-        font-size: 16px;
-        font-family: Source Han Sans CN;
-        font-weight: 400;
-        color: #0E0A6B;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-top: 12px;
-        box-sizing: border-box;
-      }
-    }
-  }
 
   .tips {
     width: 100%;

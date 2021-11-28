@@ -1,7 +1,19 @@
 <template>
   <div class="tree-container">
     <div class="tree-header">
-      <div class="title">首页</div>
+      <div class="title">
+        <img src="@/assets/wanheng/首页_slices/图层 487 拷贝@2x.png" alt="" @click="$router.push('baoku')"/>
+        首页
+      </div>
+
+      <div class="tree-notice-box">
+        <van-notice-bar
+          background="#000000"
+          color="rgba(246, 220, 161, 1)"
+          left-icon="volume-o"
+          text="最新公告：关于提现功能修改上线的通知"
+        ></van-notice-bar>
+      </div>
       <div class="tree-header-swipe">
         <div class="bannerSwp">
           <van-swipe @change="onChange" :autoplay="5000" indicator-color="#fff">
@@ -23,23 +35,34 @@
         <div class="index-menu-list-item" @click="handleTreeListItemClick(14)">
           <div class="index-menu-list-item-icon two-icon"></div>
         </div>
-        <div class="index-menu-list-item" @click="handleTreeListItemClick(3)">
+        <!-- <div class="index-menu-list-item" @click="handleTreeListItemClick(3)">
           <div class="index-menu-list-item-icon four-icon"></div>
-        </div>
+        </div> -->
         <div class="index-menu-list-item" @click="handleTreeListItemClick(13)">
           <div class="index-menu-list-item-icon three-icon"></div>
         </div>
       </div>
 
-      <div class="tree-list-info-bottom">
-        <div
-          class="tree-list-info-bottom-back"
-          @click="handleTreeListItemClick(1)"
-        ></div>
-      </div>
-
       <div class="piece">
-        <div class="left" @click="handleTreeListItemClick(3)">
+        <div class="piece_title">
+          <span></span>
+          专属推荐
+        </div>
+        <div class="piece_content">
+          <div class="item" @click="handleTreeListItemClick(6)">
+            <span class="item_name">积分商城</span>
+            <span class="item_line"></span>
+            <span class="item_info">积分免费兑换精美礼品</span>
+            <span class="item_btn" style="color: #FF7354;">立即查看</span>
+          </div>
+          <div class="item" @click="handleTreeListItemClick(16)">
+            <span class="item_name">视频专区</span>
+            <span class="item_line"></span>
+            <span class="item_info">看视频领积分</span>
+            <span class="item_btn" style="color: rgba(144, 107, 255, 1);">立即查看</span>
+          </div>
+        </div>
+        <!-- <div class="left" @click="handleTreeListItemClick(3)">
           <div class="label">运动加油站</div>
           <div class="btn">立即开始</div>
         </div>
@@ -53,43 +76,15 @@
               <div class="label">新人认证</div>
               <div class="btn">GO</div>
             </div>
-            <div class="right_bottom_item" @click.stop="handleTreeListItemClick(11)">
+            <div
+              class="right_bottom_item"
+              @click.stop="handleTreeListItemClick(11)"
+            >
               <div class="label">关于我们</div>
               <div class="btn">GO</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      <div class="goods_list">
-        <div class="title">
-          <img src="@/assets/images/left@2x.png" alt="" />
-          金币兑换
-          <img src="@/assets/images/right@2x.png" alt="" />
-        </div>
-
-        <div class="content">
-          <div class="item" v-for="(item, index) in category_data" :key="index">
-            <img :src="item.img" alt="" />
-            <div class="name">{{ item.title }}</div>
-            <div class="btns">
-              <span class="value"
-                >{{ tranNumber(item.integral, 1) }}<span class="label">金币</span></span
-              >
-              <div
-                class="btn"
-                @click="
-                  $router.push({
-                    name: 'goods_details',
-                    params: { id: item.id },
-                  })
-                "
-              >
-                兑换
-              </div>
-            </div>
-          </div>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -262,15 +257,15 @@ export default {
       });
 
       // 兑换信息
-      Fetch("/index/goods_list").then((res) => {
-        let list = [];
-        const { category } = res.data;
-        category.forEach((item) => {
-          list = list.concat(item.list);
-        });
-        console.log("list", list);
-        this.category_data = list;
-      });
+      // Fetch("/index/goods_list").then((res) => {
+      //   let list = [];
+      //   const { category } = res.data;
+      //   category.forEach((item) => {
+      //     list = list.concat(item.list);
+      //   });
+      //   console.log("list", list);
+      //   this.category_data = list;
+      // });
 
       /* Fetch('/api/api/image', {type: 'links'}).then(res => {
                     this.links = res.data;
@@ -307,30 +302,30 @@ export default {
         };
       }
     },
-    tranNumber (num, point) {
+    tranNumber(num, point) {
       // 将数字转换为字符串,然后通过split方法用.分隔,取到第0个
-      let numStr = num.toString().split('.')[0]
+      let numStr = num.toString().split(".")[0];
       if (numStr.length < 4) {
         // 判断数字有多长,如果小于6,,表示10万以内的数字,让其直接显示
-        console.log(numStr)
-        return numStr
+        console.log(numStr);
+        return numStr;
       } else if (numStr.length >= 6 && numStr.length <= 8) {
         // 如果数字大于6位,小于8位,让其数字后面加单位万
         let decimal = numStr.substring(
           numStr.length - 4,
           numStr.length - 4 + point
-        )
-        console.log(decimal)
+        );
+        console.log(decimal);
         // 由千位,百位组成的一个数字
-        return parseFloat(parseInt(num / 10000) + '.' + decimal) + '万'
+        return parseFloat(parseInt(num / 10000) + "." + decimal) + "万";
       } else if (numStr.length > 8) {
         // 如果数字大于8位,让其数字后面加单位亿
         let decimal = numStr.substring(
           numStr.length - 8,
           numStr.length - 8 + point
-        )
-        console.log(decimal)
-        return parseFloat(parseInt(num / 100000000) + '.' + decimal) + '亿'
+        );
+        console.log(decimal);
+        return parseFloat(parseInt(num / 100000000) + "." + decimal) + "亿";
       }
     },
     handleTreeListItemClick(type = 1) {
@@ -380,6 +375,8 @@ export default {
         case 15:
           this.$router.push({ name: "question_type" });
           break;
+        case 16:
+          this.$router.push({ name: "shiping" });
       }
     },
     handleMenuSwitch(type) {
@@ -406,4 +403,19 @@ export default {
 
 <style lang="less" scoped>
 @import "tree";
+</style>
+
+<style lang="less">
+.van-notice-bar {
+  padding: 0;
+  height: 25px;
+  font-size: 13px;
+  background-color: transparent !important;
+
+  > img {
+    width: 63px;
+    height: 20px;
+    margin-right: 10px;
+  }
+}
 </style>

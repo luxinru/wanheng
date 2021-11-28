@@ -1,5 +1,5 @@
 <template>
-  <div id="app" :style="show_footer ? 'margin-bottom: 65px; height:auto' : ''">
+  <div id="app">
     <keep-alive>
       <div class="header" v-if="currentPath && title">
         <div class="head" :style="(background ? `background: ${background};` : '') + (color ? `color: ${color};` : '')">
@@ -19,7 +19,7 @@
         </div>
       </div>
     </keep-alive>
-    <div style="height: calc(100vh - 50px);">
+    <div style="flex: 1 0;overflow: scroll;">
       <router-view></router-view>
     </div>
     <div class="footer_nav" v-if="show_footer && footer_type === 'n2'">
@@ -29,13 +29,13 @@
             ><img
               :src="
                 show_type == 'tree'
-                  ? require('@/assets/images/tabs/首页P@2x.png')
-                  : require('@/assets/images/tabs/首页N@2x.png')
+                  ? require('@/assets/wanheng/首页_slices/06e96f5bd03d092022c373213261ac9.png')
+                  : require('@/assets/wanheng/首页_slices/9d4d0746e9ac5681a9c1459c3a4e67b.png')
               "
             /><span>首页</span></router-link
           >
 
-          <router-link class="footer_item" to="/goods"
+          <!-- <router-link class="footer_item" to="/goods"
             ><img
               :src="
                 show_type == 'goods'
@@ -43,24 +43,24 @@
                   : require('@/assets/images/tabs/金币商城N@2x.png')
               "
             /><span>金币商城</span></router-link
-          >
+          > -->
 
           <router-link class="footer_item" to="/item"
             ><img
               :src="
                 show_type == 'touzi'
-                  ? require('@/assets/images/tabs/投资P@2x.png')
-                  : require('@/assets/images/tabs/投资N@2x.png')
+                  ? require('@/assets/wanheng/首页_slices/02739a79fd124231f6ba6654cf93649.png')
+                  : require('@/assets/wanheng/首页_slices/782bceb722a8fbf35d478f0e781f17c.png')
               "
-            /><span>投资</span></router-link
+            /><span>理财</span></router-link
           >
 
           <router-link class="footer_item" to="/index"
             ><img
               :src="
                 show_type == 'mission'
-                  ? require('@/assets/images/tabs/任务P@2x.png')
-                  : require('@/assets/images/tabs/任务N@2x.png')
+                  ? require('@/assets/wanheng/首页_slices/20c9622cd7ac93d24ec3bc4ce9c4459.png')
+                  : require('@/assets/wanheng/首页_slices/d6f98449578137c151641b85242d672.png')
               "
             /><span>任务</span></router-link
           >
@@ -69,8 +69,8 @@
             ><img
               :src="
                 show_type == 'info'
-                  ? require('@/assets/images/tabs/我的P@2x.png')
-                  : require('@/assets/images/tabs/我的N@2x.png')
+                  ? require('@/assets/wanheng/首页_slices/bdbede3c358e5807fd9b648cf481a37.png')
+                  : require('@/assets/wanheng/首页_slices/04b1c0ab090690211f52b89530aa8cb.png')
               "
             /><span>我的</span></router-link
           >
@@ -296,7 +296,6 @@ export default {
 }
 .indexnav {
   width: 100%;
-  background: #fff;
   overflow: hidden;
   line-height: 30px;
   font-size: 12px;
@@ -342,8 +341,9 @@ export default {
   min-height: 100%;
   height: 100%;
   width: 100%;
-  max-width: 750px;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
 
   /* .kefu {
 			position: fixed;
@@ -359,37 +359,22 @@ export default {
 
   .footer_nav {
     width: 100vw;
-    height: 70px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    height: 65px;
     box-shadow: 0px -1px 5px rgba(89, 125, 172, 0.4);
     margin: 0 auto;
     z-index: 998;
-    background-color: #fff;
+    background-color: RGBA(250, 218, 161, 1);
     color: #7a7e83;
-    border-left: 0 solid #fff;
-    border-top: 0 solid #fff;
-    border-right: 0 solid #fff;
-    display: -webkit-box;
-    display: -webkit-flex;
     display: flex;
-    -webkit-justify-content: space-around;
     justify-content: space-around;
-    border-top-right-radius: 0px;
-    border-top-left-radius: 0px;
     box-sizing: border-box;
     overflow: hidden;
+    flex-shrink: 0;
   }
 
   #footer {
     width: 100vw;
-    height: 70px;
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    height: 65px;
     box-shadow: 0px -1px 5px rgba(89, 125, 172, 0.4);
     margin: 0 auto;
     z-index: 998;
@@ -471,5 +456,12 @@ export default {
   align-items: center;
   color: #f5f5f5;
   // padding: 0px 10px 0;
+}
+</style>
+
+<style lang="less">
+* {
+  flex-shrink: 0;
+  box-sizing: border-box;
 }
 </style>

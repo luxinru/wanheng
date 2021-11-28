@@ -1,5 +1,12 @@
 <template>
   <div class="about-container">
+    <img class="logo" src="@/assets/wanheng/图层 36@2x.png" alt="">
+    <div class="info_box">
+      <div class="title">
+        公司简介
+      </div>
+      <div class="info">      某公司上海络科技有限公司旗在线交易网站，于2016年7月上线运营。主要服务是提供图片、视频、音频、psd源文件等形式的素材。内容版块已有广告设计、摄影图、字体、UI设计、电商淘宝、多媒体、办公文档、装饰·模型、插画配图九大类别。</div>
+    </div>
     <div class="about-list-box">
       <div
         class="about-list-item"

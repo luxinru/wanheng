@@ -1,8 +1,24 @@
 <template>
   <div>
     <div class="main3">
-      <img class="my-sp-bg" src="./images/hgy/shiping_bg.png" alt="" />
-      <p class="my-sp-title">看广告 领水滴</p>
+      <img
+        class="my-sp-bg"
+        src="@/assets/wanheng/短视频_slices/组 489@2x.png"
+        alt=""
+      />
+
+      <div class="header">
+        <div class="head">
+          <van-icon
+            name="arrow-left"
+            size="23"
+            color="#fff"
+            @click="$router.back()"
+          />
+          视频有礼
+        </div>
+      </div>
+
       <div class="videoBox">
         <!-- <div class="maskBox">御果园广告合作商</div> -->
         <video-player
@@ -17,108 +33,105 @@
         >
         </video-player>
       </div>
-	  <div v-if="videoData.download !== ''">
-      <van-button
-        class="btn down"
-        round
-        size="small"
-        @click="downFun"
- >
-        {{videoData.miaoshu}}
-      </van-button>
-	  </div>
-      <van-button
+      <!-- <div v-if="videoData.download !== ''">
+        <van-button class="btn down" round size="small" @click="downFun">
+          {{ videoData.miaoshu }}
+        </van-button>
+      </div> -->
+      <div
         class="btn my-d"
-        round
-        size="small"
-        :color="videoPlayer.load === 'ended' ? '#59BB4E' : '#ff621d'"
+        :style="{ended: 'color: #59BB4E;'}"
         @click="handleSubmit"
       >
-        {{ videoPlayer.load === 'play' ? `观看${videoPlayer.times}s后可领取水滴` : videoPlayer.text }}
-      </van-button>
+        {{
+          videoPlayer.load === "play"
+            ? `观看${videoPlayer.times}s后可领取水滴`
+            : videoPlayer.text
+        }}
+      </div>
 
       <div class="bottom-tips">
         <p>视频有礼规则:</p>
-        <p>·广告播放完毕即可领取水滴奖励</p>
+        <p>·广告播放完毕即可领取积分奖励</p>
         <p>·系统随机播放广告</p>
         <p>·相同广告每天限领一次</p>
       </div>
     </div>
-    
   </div>
 </template>
 
 <script>
-import Fetch from '../../utils/fetch';
-import 'video.js/dist/video-js.css';
-import { videoPlayer } from 'vue-video-player';
-import { Dialog } from 'vant';
+import Fetch from "../../utils/fetch";
+import "video.js/dist/video-js.css";
+import { videoPlayer } from "vue-video-player";
+import { Dialog } from "vant";
 
 export default {
-  name: 'index',
+  name: "index",
   components: { videoPlayer },
   data() {
     return {
       playerOptions: {
-        height: '240',
+        height: "240",
         autoplay: false,
         muted: false,
-        language: 'zh-CN',
+        language: "zh-CN",
         fullScreen: {
-          navigationUI: 'hide'
+          navigationUI: "hide",
         },
         sources: [
           {
-            type: 'video/mp4',
-            src: '',
+            type: "video/mp4",
+            src: "",
           },
         ],
-        poster: '',
+        poster: "",
       },
       videoData: {},
       videoPlayer: {
-        load: 'wait',
+        load: "wait",
         times: 0,
         finish: false,
-        text: '开始播放'
-      }
+        text: "开始播放",
+      },
     };
   },
   created() {
-    this.$parent.footer(false)
+    this.$parent.footer(false);
   },
   methods: {
     //点击下载
-    downFun(){
-		window.location.href = this.videoData.download;
-		
-		console.log("这里是点击下载函数")
+    downFun() {
+      window.location.href = this.videoData.download;
+
+      console.log("这里是点击下载函数");
     },
     // listen event
     onPlayerPlay() {
-      this.videoPlayer.load = 'play'
+      this.videoPlayer.load = "play";
     },
     onPlayerPause() {
-      this.videoPlayer.load = 'wait'
-      this.videoPlayer.text = '开始播放'
+      this.videoPlayer.load = "wait";
+      this.videoPlayer.text = "开始播放";
     },
     onPlayerEnded() {
       if (!this.videoPlayer.finish) {
-        this.videoPlayer.text = '领取水滴'
-        this.videoPlayer.load = 'ended'
+        this.videoPlayer.text = "领取水滴";
+        this.videoPlayer.load = "ended";
       } else {
-        this.videoPlayer.text = '开始播放'
-        this.videoPlayer.load = 'wait'
+        this.videoPlayer.text = "开始播放";
+        this.videoPlayer.load = "wait";
       }
     },
     onPlayerTimeupdate(player) {
-      this.videoPlayer.times = this.videoData.times - parseInt(player.currentTime())
+      this.videoPlayer.times =
+        this.videoData.times - parseInt(player.currentTime());
     },
     start() {
-      Fetch('/tree/getVideo').then((res) => {
+      Fetch("/tree/getVideo").then((res) => {
         this.videoData = res.data;
         this.$set(this.playerOptions.sources, 0, {
-          type: 'video/mp4',
+          type: "video/mp4",
           src: this.videoData.video_path,
         });
         this.playerOptions.poster = this.videoData.video_img;
@@ -126,23 +139,23 @@ export default {
     },
     handleSubmit() {
       switch (this.videoPlayer.load) {
-        case 'play':
-          this.player.pause()
-          break
-        case 'wait':
-          this.player.play()
-          break
-        case 'ended':
-          Fetch('/tree/getIntegralByVideo', { id: this.videoData.id }).then(
+        case "play":
+          this.player.pause();
+          break;
+        case "wait":
+          this.player.play();
+          break;
+        case "ended":
+          Fetch("/tree/getIntegralByVideo", { id: this.videoData.id }).then(
             (res) => {
               Dialog.alert({
-                title: '提示',
-                message: res.info
+                title: "提示",
+                message: res.info,
               });
-              this.videoPlayer.finish = true
+              this.videoPlayer.finish = true;
             }
           );
-          break
+          break;
       }
     },
   },
@@ -153,30 +166,30 @@ export default {
   computed: {
     player() {
       return this.$refs.videoPlayer.player;
-    }
+    },
   },
 };
 </script>
 
 <style lang="less" scoped>
-@import 'shiping';
+@import "shiping";
 /* .ddates{
 		width: 100%;
 		text-align: center;
 		margin: 2vw 0;
   } */
-.videoBox{
+.videoBox {
   // position: relative;
   position: absolute;
   // width: 335px;
-  height: 149px;
+  height: 186px;
   top: 417px;
   left: 20px;
   right: 20px;
   border-radius: 7px;
   overflow: hidden;
 }
-.maskBox{
+.maskBox {
   position: absolute;
   color: white;
   bottom: 8px;
@@ -188,47 +201,58 @@ export default {
   position: absolute;
   width: 291px;
   height: 44px;
-  background: linear-gradient(0deg, #FFA600 0%, #FEF77C 100%);
+  background: linear-gradient(0deg, #ffa600 0%, #fef77c 100%);
   border-radius: 22px;
   font-size: 16px;
-  color: #FB4901;
+  color: #fb4901;
   text-align: center;
   left: 50%;
   transform: translate(-50%);
 }
-.down{
+.down {
   // margin-top: 200px;
   // background-color: #fdac3e;
   top: 588px;
 }
 .main3 {
-  background-size: 100%;
-  background-repeat: no-repeat;
   width: 100%;
   margin: 0;
-  padding: 0 0 30px;
-  height: 900px;
-  background-color: #fbfbfb;
-  align-items: center;
+  height: 812px;
   text-align: center;
   position: relative;
-  .my-sp-bg{
+
+  .header {
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: transparent;
+
+    .head {
+      background: transparent;
+      color: #fff;
+    }
+  }
+  .my-sp-bg {
     position: absolute;
     width: 100%;
-    height: 100%;
+    height: 812px;
     left: 0;
     top: 0;
     z-index: -1;
   }
-  .my-sp-title{
+  .my-sp-title {
     padding-top: 18px;
     text-align: center;
     font-size: 41px;
     font-family: FZZhengHeiS-EB-GB;
     font-weight: 400;
-    color: #FFFFFF;
-    text-shadow: 0px 3px 0px #F2010A;
-    background: linear-gradient(0deg, #FEEAC7 0%, #FFFFFF 100%);
+    color: #ffffff;
+    text-shadow: 0px 3px 0px #f2010a;
+    background: linear-gradient(0deg, #feeac7 0%, #ffffff 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
@@ -288,19 +312,27 @@ export default {
 .nowaction3 {
   color: #fff;
 }
-.my-d{
-  top: 650px
+.my-d {
+  top: 617px;
+  width: 291px;
+  height: 44px;
+  background: linear-gradient(0deg, #fe352b 0%, #ff9850 100%);
+  border-radius: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }
-.bottom-tips{
+.bottom-tips {
   font-size: 15px;
   font-family: Source Han Sans CN;
   font-weight: 400;
-  color: #FFFFFF;
+  color: #ffffff;
   position: absolute;
   left: 24px;
-  top: 757px;
+  top: 693px;
   text-align: left;
-  p{
+  p {
     line-height: 20px;
   }
 }

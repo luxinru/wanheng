@@ -1,12 +1,11 @@
 .index-container {
   width: 100%;
   height: 100%;
-  background: url(../../assets/images/任务_slices/bg-任务@2x.png) no-repeat;
-  background-size: 100%;
+  background: RGBA(255, 238, 221, 1);
   overflow: scroll;
   .header-title {
     width: 100%;
-    height: 48px;
+    height: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -15,42 +14,35 @@
     font-size: 18px;
     font-family: PingFang SC-Medium, PingFang SC;
     font-weight: 500;
-    color: #ffffff;
+    color: rgba(70, 70, 70, 1);
   }
   .header-cont {
-    width: 100%;
-    height: 82px;
+    width: 338px;
+    height: 150px;
+    background: url('~@/assets/wanheng/积分_slices/矩形 5@2x.png') no-repeat;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 36px auto 0;
     display: flex;
-    padding: 0 21px 0 12px;
-    box-sizing: border-box;
-    .left {
-      flex: 1 0;
-      height: 100%;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0 0 0;
+
+    span {
+      width: 100%;
+      font-size: 25px;
+      font-weight: normal;
+      color: #FFFFFF;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
 
-      .header-cont-text {
-        font-size: 12px;
-        font-family: PingFang SC-Regular, PingFang SC;
+      &:last-child {
+        font-size: 20px;
         font-weight: 400;
-        color: #333333;
+        color: #FFFFFF;
+        margin-top: 16px;
       }
-      .header-cont-number {
-        height: 47px;
-        font-size: 40px;
-        font-family: Roboto-Bold, Roboto;
-        font-weight: bold;
-        color: #333333;
-        display: flex;
-        align-items: center;
-        margin-top: 5px;
-      }
-    }
-
-    img {
-      width: 82px;
-      height: 82px;
     }
   }
 
@@ -158,64 +150,56 @@
     margin-top: 16px;
     padding: 0 12px;
     box-sizing: border-box;
-    .title {
-      display: flex;
-      align-items: center;
-
-      span {
-        width: 4px;
-        height: 16px;
-        background: rgba(255, 138, 53, 1);
-        margin-right: 5px;
-      }
-
-      font-size: 16px;
-      font-family: PingFang SC-Semibold, PingFang SC;
-      font-weight: 600;
-      color: #333333;
-    }
     .task-list-item {
-      width: 100%;
-      height: 68px;
-      margin-top: 10px;
+      width: 342px;
+      height: 82px;
+      margin-top: 22px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       background: #FFFFFF;
       box-shadow: 0px 1px 12px 1px rgba(0,0,0,0.05000000074505806);
-      border-radius: 10px;
-      padding: 12px;
+      border-radius: 4px;
+      padding: 0 14px;
       box-sizing: border-box;
       &-left {
         flex: 1;
         display: flex;
         align-items: center;
         .item-icon {
-          width: 41px;
-          height: 41px;
-          background-size: cover;
+          width: 50px;
+          height: 20px;
+          background-size: 100% 100%;
           background-repeat: no-repeat;
+          display: flex;
+          align-items: center;
+          justify-content: center;
           &.icon-1 {
-            background-image: url('./../../assets/images/shufeng/task/task2.png');
+            background-image: url('~@/assets/wanheng/积分_slices/矢量智能对象@2x(5).png');
           }
           &.icon-2 {
-            background-image: url('./../../assets/images/shufeng/task/task3.png');
+            background-image: url('~@/assets/wanheng/积分_slices/矢量智能对象@2x(1).png');
           }
           &.icon-3 {
-            background-image: url('./../../assets/images/shufeng/task/task4.png');
+            background-image: url('~@/assets/wanheng/积分_slices/矢量智能对象@2x(3).png');
           }
           &.icon-4 {
-            background-image: url('./../../assets/images/shufeng/task/task5.png');
+            background-image: url('~@/assets/wanheng/积分_slices/矢量智能对象@2x(2).png');
           }
           &.icon-5 {
-            background-image: url('./../../assets/images/shufeng/task/task6.png');
+            background-image: url('~@/assets/wanheng/积分_slices/矢量智能对象@2x.png');
           }
           &.icon-6 {
-            background-image: url('./../../assets/images/shufeng/task/task7.png');
+            background-image: url('~@/assets/wanheng/积分_slices/矢量智能对象@2x(4).png');
+          }
+
+          span {
+            font-size: 12px;
+            color: #FFEEDD;
+            transform: scale(7 / 12);
           }
         }
         .item-title-box {
-          padding-left: 15px;
         }
         .item-title {
           font-size: 14px;
