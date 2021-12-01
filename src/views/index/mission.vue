@@ -15,7 +15,7 @@
     </div>
     <div class="index-content">
       <div class="task-list-box">
-        <div class="task-list-item">
+        <!-- <div class="task-list-item">
           <div class="task-list-item-left">
             <div class="item-icon icon-1"></div>
             <div class="item-title-box">
@@ -23,14 +23,14 @@
               <div class="item-sub-title">观看视频可加+10积分</div>
             </div>
           </div>
-          <!-- <div
+          <div
             class="task-list-item-right"
             :class="{ 'active-btn': mission.qiandao_status }"
             @click="checkin2()"
           >
             {{ mission.qiandao_status ? "已完成" : "去完成" }}
-          </div> -->
-        </div>
+          </div>
+        </div> -->
 
         <div class="task-list-item">
           <div class="task-list-item-left">
@@ -90,13 +90,13 @@
               <div class="item-sub-title">每天坚持运动可获得大量积分</div>
             </div>
           </div>
-          <div
+          <!-- <div
             class="task-list-item-right"
             :class="{ 'active-btn': mission.yue_bao_status }"
             @click="handleTaskListItem(6)"
           >
             {{ mission.yue_bao_status ? "已完成" : "去完成" }}
-          </div>
+          </div> -->
         </div>
 
         <div class="task-list-item">
@@ -110,7 +110,7 @@
           <div
             class="task-list-item-right"
             :class="{ 'active-btn': mission.answer_status }"
-            @click="handleTaskListItem(6)"
+            @click="handleTaskListItem(8)"
           >
             {{ mission.answer_status ? "已完成" : "去完成" }}
           </div>
@@ -127,13 +127,13 @@
           <!-- <div
             class="task-list-item-right"
             :class="{ 'active-btn': mission.answer_status }"
-            @click="handleTaskListItem(6)"
+            @click="handleTaskListItem(5)"
           >
             {{ mission.answer_status ? "已完成" : "去完成" }}
           </div> -->
         </div>
 
-        <div class="task-list-item">
+        <!-- <div class="task-list-item">
           <div class="task-list-item-left">
             <div class="item-icon icon-8"></div>
             <div class="item-title-box">
@@ -141,14 +141,14 @@
               <div class="item-sub-title">休闲的同时还可获得积分</div>
             </div>
           </div>
-          <!-- <div
+          <div
             class="task-list-item-right"
             :class="{ 'active-btn': mission.yue_bao_status == true }"
             @click="handleTaskListItem(2)"
           >
             {{ mission.yue_bao_status == true ? "已完成" : "去完成" }}
-          </div> -->
-        </div>
+          </div>
+        </div> -->
 
         <!-- 
 				<div class="task-list-item">
@@ -358,6 +358,9 @@ export default {
           break;
         case 7:
           this.$router.push({ name: "question_type" });
+          break;
+        case 8:
+          this.$router.push({ name: "wenjuan" });
           break;
       }
     },
