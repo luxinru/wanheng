@@ -11,24 +11,25 @@
             <div>支付方式</div>
         </div> -->
 
+    <div class="box"></div>
+
     <div class="balance">
       <div class="label">账户余额（元）</div>
       <div class="value">{{ data.money }}</div>
     </div>
 
-    <div class="apply-form-money">
-      <div class="apply-form-money-input">
-        <van-field
-          v-model="money"
+    <div class="textBox">
+        <p class="cash-type">充值金额</p>
+        <input
           type="text"
-          label-class="transaction-input"
+          name="money"
+          class="pwd-input"
+          v-model="money"
           placeholder="请输入金额"
         />
       </div>
-      <!-- <div class="apply-form-money-sub-title">
-        {{ data.min }} 元起投，项目可投 {{ data.kt_money }} 元
-      </div> -->
-    </div>
+
+    <div class="recharge-btn" @click="show = true">立即充值</div>
 
     <div class="recharge-remark-box">
       <p class="recharge-remark-title">转账说明</p>
@@ -41,7 +42,6 @@
       </p>
       <p>4.如有疑问可以联系在线客服咨询</p>
     </div>
-    <div class="recharge-btn" @click="show = true">立即充值</div>
 
     <van-popup v-model="show" position="bottom" :style="{ height: '502px' }">
       <div class="recharge-manner-box">

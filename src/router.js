@@ -71,7 +71,7 @@ export default new Router({
     {
       path: '/register',
       name: 'register',
-      meta: { title: '注册' },
+      meta: { title: '注册账号', background: 'RGBA(254, 251, 244, 1)' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/register.vue')
     },
@@ -124,7 +124,7 @@ export default new Router({
     {
       path: '/recharge',
       name: 'recharge',
-      meta: { title: '充值中心', background: '#fff', color: '#000' },
+      meta: { title: '充值中心' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/recharge.vue')
     },
@@ -141,7 +141,7 @@ export default new Router({
     {
       path: '/recharge/bank',
       name: 'rebank',
-      meta: { title: '充值中心', hiddenTitle: true },
+      meta: { title: '充值详情' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/rebank.vue')
     },
@@ -155,7 +155,7 @@ export default new Router({
     {
       path: '/cash',
       name: 'cash',
-      meta: { title: '提现', background: '#fff', color: '#000' },
+      meta: { title: '提现' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/cash.vue')
     },
@@ -169,7 +169,7 @@ export default new Router({
     {
       path: '/start',
       name: 'start',
-      meta: { title: '看图猜谜' },
+      meta: { title: '看图猜谜', hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/anwser/start.vue')
     },
@@ -268,7 +268,7 @@ export default new Router({
     {
       path: '/bank',
       name: 'bank',
-      meta: { title: '我的银行卡', background: '#fff', color: '#000' },
+      meta: { title: '我的银行卡' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/bank.vue')
     },
@@ -490,8 +490,16 @@ export default new Router({
     {
       path: '/mission',
       name: 'mission',
+      meta: { hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/index/mission.vue')
+    },
+    {
+      path: '/pass_through',
+      name: 'pass_through',
+      meta: { title: '闯关中心', hiddenTitle: true },
+      component: () =>
+        import(/* webpackChunkName: "home" */ './views/index/pass_through.vue')
     },
     {
       path: '/baoku',

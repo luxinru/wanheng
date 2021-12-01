@@ -4,11 +4,11 @@
       <div class="item" v-for="(item, key) in data.list" :key="key">
         <div class="content">
           <div class="item_info">
-            <span>申请提现：</span>
-            <span>{{ item.type == 1 ? "+" : "-" }}{{ item.money }}</span>
+            <span>充值金额：</span>
+            <span>+{{ item.money }}</span>
           </div>
           <div class="item_info">
-            <span>申请时间：</span>
+            <span>充值时间：：</span>
             <span>{{ item.time }}</span>
           </div>
           <div class="item_info">

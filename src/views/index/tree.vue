@@ -32,7 +32,7 @@
         <div class="index-menu-list-item" @click="handleTreeListItemClick(1)">
           <div class="index-menu-list-item-icon one-icon"></div>
         </div>
-        <div class="index-menu-list-item" @click="handleTreeListItemClick(14)">
+        <div class="index-menu-list-item" @click="handleTreeListItemClick(17)">
           <div class="index-menu-list-item-icon two-icon"></div>
         </div>
         <!-- <div class="index-menu-list-item" @click="handleTreeListItemClick(3)">
@@ -55,10 +55,10 @@
             <span class="item_info">积分免费兑换精美礼品</span>
             <span class="item_btn" style="color: #FF7354;">立即查看</span>
           </div>
-          <div class="item" @click="handleTreeListItemClick(16)">
-            <span class="item_name">视频专区</span>
+          <div class="item" @click="handleTreeListItemClick(5)">
+            <span class="item_name">幸运转盘</span>
             <span class="item_line"></span>
-            <span class="item_info">看视频领积分</span>
+            <span class="item_info">现金好礼转不停</span>
             <span class="item_btn" style="color: rgba(144, 107, 255, 1);">立即查看</span>
           </div>
         </div>
@@ -377,6 +377,10 @@ export default {
           break;
         case 16:
           this.$router.push({ name: "shiping" });
+          break;
+        case 17:
+          this.$router.push({ name: "pass_through" });
+          break;
       }
     },
     handleMenuSwitch(type) {

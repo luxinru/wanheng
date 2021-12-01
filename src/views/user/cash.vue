@@ -1,11 +1,12 @@
 <template>
   <div class="page">
+    <div class="box"></div>
     <div class="balance">
-      <div class="label">账户余额（元）</div>
+      <div class="label">我的余额（元）</div>
       <div class="value">{{ data.money }}</div>
     </div>
 
-    <div class="apply-form-money">
+    <!-- <div class="apply-form-money">
       <div class="apply-form-money-input">
         <span>￥</span>
         <van-field
@@ -16,13 +17,18 @@
         />
         <span>全部提出</span>
       </div>
-      <!-- <div class="apply-form-money-sub-title">
-        {{ data.min }} 元起投，项目可投 {{ data.kt_money }} 元
-      </div> -->
-    </div>
+    </div> -->
 
     <div class="main">
       <div class="textBox">
+        <p class="cash-type">提现金额</p>
+        <input
+          type="text"
+          name="money"
+          class="pwd-input"
+          v-model="money"
+          placeholder="请输入转账金额"
+        />
         <p class="cash-type">提现至</p>
         <div class="bank-info-box" @click="show = true" ref="add">
           <div class="leftBox">
@@ -31,7 +37,7 @@
             <span>></span>
           </div>
         </div>
-        <!-- <p class="pwd-tips">支付密码</p>
+        <p class="pwd-tips">支付密码</p>
         <input
           type="password"
           class="pwd-input"
@@ -40,8 +46,8 @@
           v-model="passwd"
           placeholder=""
         />
-        <p class="forget-pwd" @click="handleForgetPassword">忘记密码？</p> -->
-        <!-- <div class="cash-btn" @click="handleSubmit">立即提现</div> -->
+        <p class="forget-pwd" @click="handleForgetPassword">忘记密码？</p>
+        <div class="cash-btn" @click="handleSubmit">立即提现</div>
         <div class="cash-tips-cont">
           <p class="cash-title">提现说明</p>
           <div>
@@ -58,7 +64,6 @@
           </div>
         </div>
       </div>
-      <div class="cash-btn" @click="show2 = true">去提现</div>
     </div>
     <!-- <div class="cash-info-box">
             <div class="recharge-header-box">
@@ -229,6 +234,8 @@ export default {
   background-color: #ffffff;
   padding: 20px 22px;
   margin-top: 17px;
+  display: flex;
+  flex-direction: column;
 }
 
 .inputBox {
@@ -261,42 +268,53 @@ export default {
   }
 }
 .page {
+  position: relative;
   min-height: 100%;
   background-color: #fafafa;
   font-family: PingFang SC;
-  padding-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 101px;
+    background: rgba(250, 218, 161, 1);
+  }
 
   .balance {
-    width: 100%;
-    height: 180px;
+    width: 335px;
+    height: 116px;
     display: flex;
     flex-direction: column;
-    background: url(../../assets/images/背景@2x.png) no-repeat;
+    justify-content: center;
+    margin-top: 3px;
+    background: url('~@/assets/wanheng/银行卡_slices/椭圆 4 拷贝 3@2x.png');
     background-size: 100% 100%;
 
     .label {
-      width: 100%;
-      height: 17px;
       font-size: 12px;
       font-family: PingFang SC-Regular, PingFang SC;
       font-weight: 400;
       color: #ffffff;
-      margin-top: 21px;
+      // margin-top: 30px;
+      margin-left: 32px;
       display: flex;
       align-items: center;
-      justify-content: center;
     }
 
     .value {
-      width: 100%;
-      height: 48px;
       font-size: 34px;
       font-family: PingFang SC-Semibold, PingFang SC;
-      font-weight: 600;
+      // font-weight: 600;
       color: #ffffff;
       display: flex;
       align-items: center;
-      justify-content: center;
+      margin-top: 16px;
+      margin-left: 32px;
     }
   }
 
@@ -308,7 +326,7 @@ export default {
     border-radius: 10px;
     display: flex;
     flex-direction: column;
-    margin: -80px auto 0;
+    // margin: -80px auto 0;
 
     &-input {
       margin: 16px 40px 0;
@@ -377,7 +395,6 @@ export default {
   }
   .main {
     padding: 0 13px;
-    margin-top: 22px;
     background-color: #fafafa;
     position: relative;
     .money-cont {
@@ -410,7 +427,7 @@ export default {
     .cash-btn {
       width: 343px;
       height: 49px;
-      background: #ff8a35;
+      background: RGBA(204, 148, 53, 1);
       border-radius: 27px;
       display: flex;
       align-items: center;
@@ -427,11 +444,8 @@ export default {
       font-size: 16px;
       font-family: PingFang SC;
       font-weight: 500;
-      color: #475673;
+      color: rgba(204, 148, 53, 1);
       text-align: left;
-    }
-    .cash-type {
-      margin-top: 0;
     }
     .bank-info-box {
       margin-top: 16px;
@@ -457,7 +471,7 @@ export default {
     .pwd-input {
       margin-top: 17px;
       padding: 16px 25px;
-      width: 299px;
+      width: 100%;
       height: 43px;
       background: #f9f6ef;
       border-radius: 7px;

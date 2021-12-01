@@ -3,8 +3,8 @@
   <div class="boxFun">
     <div class="container">
       <div class="btns">
-        <span>提现中</span>
-        <span>已提现</span>
+        <span :class="{selected: type === 1}" @click="type = 1">提现中</span>
+        <span :class="{selected: type === 2}" @click="type = 2">已提现</span>
       </div>
       <div class="item" v-for="(item, key) in data.list" :key="key">
         <div class="content">
@@ -36,6 +36,7 @@ export default {
   components: {},
   data() {
     return {
+      type: 1,
       data: {},
     };
   },

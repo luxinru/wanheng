@@ -15,7 +15,6 @@
             <p class="title">充值金额</p>
             <p class="money">{{money}}</p>
         </div> -->
-    <headers title="充值详请" :money="money" />
     <div class="main">
       <div class="recharge-centre-info-form-box">
         <!-- <div class="recharge-centre-info-form"> -->
@@ -28,7 +27,8 @@
         </div>
         <div class="info-form-item">
           <div class="info-form-item-left">收款人</div>
-          <div class="info-form-item-right rightFlex">
+          <div class="info-form-item-right">
+            <span class="fontcolor">{{ bank_user }}</span>
             <div
               class="copy-cont"
               v-clipboard="() => bank_user"
@@ -37,7 +37,6 @@
               <img src="./images/sf/copy2.png" />
               <span class="copyText">复制</span>
             </div>
-            <span class="fontcolor">{{ bank_user }}</span>
             <!-- <div class="right-icon" v-clipboard="() => bank_user" v-clipboard:success="copy"></div>
                         <span class="copyText" v-clipboard="() => bank_user" v-clipboard:success="copy">复制</span> -->
           </div>
@@ -117,12 +116,10 @@ import Vue from 'vue'
 import { NavBar, Button } from 'vant'
 import Fetch from '../../utils/fetch'
 import Clipboard from 'v-clipboard'
-import headers from './components/header.vue'
 Vue.use(NavBar)
   .use(Button)
   .use(Clipboard)
 export default {
-  components: { headers },
   data () {
     return {
       bank_name: '',
@@ -187,6 +184,8 @@ export default {
   color: #767676;
 }
 .recharge-centre-container {
+  width: 100%;
+  height: 100%;
   background-color: #f5f5f5;
   // padding-top: 20px;
   font-family: PingFang SC;
@@ -219,11 +218,15 @@ export default {
       background-color: #ffffff;
       border-radius: 13px;
       padding: 0 20px;
+      display: flex;
+      flex-direction: column;
       .info-form-item {
         padding: 18px 0;
         display: flex;
         align-items: center;
         border-bottom: solid 1px #e9eaec;
+        box-sizing: border-box;
+        width: 100%;
         .info-form-item-left {
           font-size: 15px;
           font-weight: 400;
@@ -232,16 +235,17 @@ export default {
           flex-shrink: 0;
         }
         .info-form-item-right {
+          flex: 1 0;
           display: flex;
           align-items: center;
-          justify-content: space-between;
+          justify-content: flex-end;
           font-size: 15px;
           font-weight: 400;
           color: #000000;
-          width: 100%;
           .copy-cont {
             display: flex;
             align-items: center;
+            margin-left: 4px;
             img {
               width: 14px;
               height: 15px;
@@ -253,6 +257,11 @@ export default {
               color: #ff7045;
               margin-left: 4px;
             }
+          }
+
+          input {
+            flex: 1 0;
+            text-align: right;
           }
         }
       }
@@ -287,7 +296,7 @@ export default {
     .info-form-btn {
       width: 306px;
       height: 52px;
-      background: #ff7045;
+      background: #fadaa1;
       border-radius: 26px;
       line-height: 52px;
       // background-color: #0F79FF;

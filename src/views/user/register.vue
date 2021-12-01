@@ -11,7 +11,7 @@
 				<span class="regist">手机号注册</span>
 			</div> -->
     <div class="register-box">
-      <img class="img" src="@/assets/images/椭圆3拷贝@2x.png" alt="" />
+      <!-- <img class="img" src="@/assets/images/椭圆3拷贝@2x.png" alt="" /> -->
       <!-- <div class="item" style="display:none;">
 					<div class="left">国家/地区</div>
 					<div class="right" @click="handleSelectArea">
@@ -47,11 +47,9 @@
       <div class="item">
         <div class="left">验证码:</div>
         <!-- <img src="./images/xg/code.png" /> -->
-        <div class="code-btn-cont">
-          <input v-model="data.code" placeholder="验证码" />
-          <div class="code-btn" @click="sendcode()">
-            {{ timeData.seconds > 0 ? timeData.seconds : '获取验证码' }}
-          </div>
+        <input v-model="data.code" placeholder="验证码" />
+        <div class="code-btn" @click="sendcode()">
+          {{ timeData.seconds > 0 ? timeData.seconds : '获取验证码' }}
         </div>
       </div>
       <div class="item">
@@ -61,7 +59,7 @@
       </div>
     </div>
     <div class="register-btn" @click="handleSubmit">注 册</div>
-    <div class="login-btn" @click="handleLogin()">已有账号</div>
+    <div class="login-btn" @click="handleLogin()">返回登录</div>
     <!-- <div class="register-footer">
 				<div>注册即代表同意</div>
 				<div class="footer-link" @click="handleGoUserTerms">用户协议</div>
@@ -116,7 +114,7 @@ Vue.use(CountDown).use(Checkbox)
 
 export default {
   name: 'index',
-  data() {
+  data () {
     return {
       time: 0,
       bg: '',
@@ -126,7 +124,7 @@ export default {
         password: '',
         spassword: '',
         code: '',
-        t_mobile: '',
+        t_mobile: ''
       },
       base64Image: '',
       is_t_inp: false,
@@ -136,7 +134,7 @@ export default {
       // 用户隐私条款
       loginTerms: false,
       timeData: {
-        seconds: 0,
+        seconds: 0
       },
       isShowAction: false,
       formAreaLabel: '+86',
@@ -144,14 +142,14 @@ export default {
         { name: '中国大陆（+86）', labelName: '+86', type: 1 },
         { name: '中国澳门（+853）', labelName: '+853', type: 2 },
         { name: '中国香港（+852）', labelName: '+852', type: 3 },
-        { name: '中国台湾（+886）', labelName: '+886', type: 4 },
-      ],
+        { name: '中国台湾（+886）', labelName: '+886', type: 4 }
+      ]
     }
   },
-  created() {
+  created () {
     this.$parent.footer(false)
   },
-  mounted() {
+  mounted () {
     const params = location.search.replace('?', '').replace('/', '')
     var query = qs.parse(params)
     /* this.data.t_mobile = query.m;
@@ -173,26 +171,26 @@ export default {
     //         this.base64Image = res.data.code
     //     });
     // },
-    start() {
+    start () {
       Fetch('/index/webconfig', {
-        type: 'bg',
-      }).then((res) => {
+        type: 'bg'
+      }).then(res => {
         this.bg = 'url("' + res.data.reg + '")'
       })
       Fetch('/index/webconfig', {
-        type: 'web',
-      }).then((res) => {
+        type: 'web'
+      }).then(res => {
         this.config = res.data
       })
     },
-    clear() {
+    clear () {
       this.data.username = ''
     },
-    timeCall() {
+    timeCall () {
       this.is_send = false
       this.time = 0
     },
-    sendcode() {
+    sendcode () {
       if (this.is_send) {
         return
       }
@@ -214,20 +212,20 @@ export default {
       this.is_send = true
 
       Fetch('/index/register_code', {
-        mobile: this.data.mobile,
+        mobile: this.data.mobile
       })
         .then(() => {
           this.time = 60 * 1000
           this.$notify({
             background: '#07c160',
-            message: '发送成功',
+            message: '发送成功'
           })
         })
         .catch(() => {
           this.is_send = false
         })
     },
-    handleSubmit() {
+    handleSubmit () {
       if (!this.data.mobile) {
         this.$notify('请输入您的手机号')
         return
@@ -273,14 +271,14 @@ export default {
         }
       }
       Fetch('/index/register', {
-        ...this.data,
-      }).then((res) => {
+        ...this.data
+      }).then(res => {
         if (res.data.token) {
           localStorage.setItem('token', res.data.token)
         }
         this.$notify({
           background: '#07c160',
-          message: '注册成功',
+          message: '注册成功'
         })
         this.$router.replace('/tree')
         // 安卓原生
@@ -289,7 +287,7 @@ export default {
             for (var i = 0; i < imei.split(',').length; i++) {
               Fetch('/index/test_imei', {
                 imei: imei.split(',')[i],
-                muid: md5(imei.split(',')[i].toLowerCase()).toLowerCase(),
+                muid: md5(imei.split(',')[i].toLowerCase()).toLowerCase()
               })
 
               // 返回了oaid
@@ -297,13 +295,13 @@ export default {
                 Fetch('/index/tx_action', {
                   type: 'Android',
                   muid: imei,
-                  action_type: 'REGISTER',
+                  action_type: 'REGISTER'
                 })
               } else {
                 Fetch('/index/tx_action', {
                   type: 'Android',
                   muid: md5(imei.split(',')[i].toLowerCase()).toLowerCase(),
-                  action_type: 'REGISTER',
+                  action_type: 'REGISTER'
                 })
               }
             }
@@ -314,48 +312,48 @@ export default {
         }
       })
     },
-    getIosIdfa() {
+    getIosIdfa () {
       window.webkit.messageHandlers.idfa.postMessage({ result: 'idfa' }) //app中接收到之后会回调给下面的函数
     },
-    returnIosIdfa(idfa) {
+    returnIosIdfa (idfa) {
       var muid = md5(idfa.toUpperCase()).toLowerCase()
       Fetch('/index/tx_action', {
         type: 'iOS',
         muid: muid,
         action_type: 'REGISTER',
-        mobile: this.data.mobile,
+        mobile: this.data.mobile
       })
       this.$router.replace('/tree')
     },
     // 登录
-    handleLogin() {
+    handleLogin () {
       this.$router.push({ name: 'login' })
     },
     // 隐私协议
-    handleGoPrivacyPolicy() {
+    handleGoPrivacyPolicy () {
       this.$router.push({ path: this.config.user_contract_ys_link })
     },
     // 用户条款
-    handleGoUserTerms() {
+    handleGoUserTerms () {
       this.$router.push({ path: this.config.user_contract_link })
     },
     // 选择地区
-    handleSelectArea() {
+    handleSelectArea () {
       this.isShowAction = true
     },
-    handleSelectAction(item) {
+    handleSelectAction (item) {
       this.formAreaLabel = item.labelName
       this.data = Object.assign({}, this.data, {
-        telAddress: item.name,
+        telAddress: item.name
       })
     },
-    handleCancelAction() {
+    handleCancelAction () {
       this.isShowAction = false
     },
-    handleBack() {
+    handleBack () {
       this.$router.push({ name: 'login' })
-    },
-  },
+    }
+  }
 }
 </script>
 

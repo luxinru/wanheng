@@ -7,7 +7,7 @@
         :key="k"
         @click="selectCard(k)"
       >
-        <img class="bank-bg" src="../../assets/bank/其他银行卡片@2x.png" />
+        <img class="bank-bg" src="@/assets/wanheng/银行卡_slices/椭圆 4 拷贝 3@2x.png" />
         <div class="bank-info">
           <!-- <img class="bank-icon" src="../../assets/bank/icon2.png" /> -->
           <div class="bank-name">
@@ -175,6 +175,9 @@ export default {
   font-family: PingFang SC;
   border: 1px solid transparent;
   box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   .none-bank-icon {
     width: 212px;
     height: 158px;
@@ -192,10 +195,9 @@ export default {
     margin-top: 33px;
   }
   .card-item {
-    margin-top: 17px;
-    margin-left: 14px;
-    width: 347px;
-    // height: 84px;
+    margin-top: 16px;
+    width: 335px;
+    height: 118px;
     overflow: hidden;
     position: relative;
     // border-radius: 13px;
@@ -208,7 +210,7 @@ export default {
     justify-content: space-between;
     .bank-bg {
       position: absolute;
-      width: 347px;
+      width: 100%;
       // height: 183px;
       height: 100%;
       top: 0;
@@ -244,7 +246,7 @@ export default {
     bottom: 24px;
     width: 343px;
     height: 49px;
-    background: #FF8A35;
+    background: RGBA(204, 148, 53, 1);
     border-radius: 27px;
     display: flex;
     align-items: center;

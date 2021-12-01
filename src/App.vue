@@ -29,8 +29,8 @@
             ><img
               :src="
                 show_type == 'tree'
-                  ? require('@/assets/wanheng/首页_slices/06e96f5bd03d092022c373213261ac9.png')
-                  : require('@/assets/wanheng/首页_slices/9d4d0746e9ac5681a9c1459c3a4e67b.png')
+                  ? require('@/assets/wanheng/首页_slices/首页2.png')
+                  : require('@/assets/wanheng/首页_slices/首页1.png')
               "
             /><span>首页</span></router-link
           >
@@ -55,7 +55,7 @@
             /><span>理财</span></router-link
           >
 
-          <router-link class="footer_item" to="/index"
+          <router-link class="footer_item" to="/mission"
             ><img
               :src="
                 show_type == 'mission'
@@ -84,17 +84,17 @@
             ><img
               :src="
                 show_type == 'tree'
-                  ? require('@/assets/images/tabs/首页P@2x.png')
-                  : require('@/assets/images/tabs/首页N@2x.png')
+                  ? require('@/assets/wanheng/首页_slices/首页2.png')
+                  : require('@/assets/wanheng/首页_slices/首页1.png')
               "
             /><span>首页</span></router-link
           >
-          <router-link class="footer_item" to="/index"
+          <router-link class="footer_item" to="/mission"
             ><img
               :src="
                 show_type == 'mission'
-                  ? require('@/assets/images/tabs/任务P@2x.png')
-                  : require('@/assets/images/tabs/任务N@2x.png')
+                  ? require('@/assets/wanheng/首页_slices/20c9622cd7ac93d24ec3bc4ce9c4459.png')
+                  : require('@/assets/wanheng/首页_slices/d6f98449578137c151641b85242d672.png')
               "
             /><span>任务</span></router-link
           >
@@ -102,8 +102,8 @@
             ><img
               :src="
                 show_type == 'info'
-                  ? require('@/assets/images/tabs/我的P@2x.png')
-                  : require('@/assets/images/tabs/我的N@2x.png')
+                  ? require('@/assets/wanheng/首页_slices/bdbede3c358e5807fd9b648cf481a37.png')
+                  : require('@/assets/wanheng/首页_slices/04b1c0ab090690211f52b89530aa8cb.png')
               "
             /><span>我的</span></router-link
           >

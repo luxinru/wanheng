@@ -2,12 +2,14 @@
   <div class="login-container">
     <div class="login-box">
 
-      <img class="img" src="@/assets/images/椭圆3拷贝@2x.png" alt="" />
+      <img class="img" src="@/assets/wanheng/登陆_slices/头像@2x.png" alt="" />
+
+      <span class="tips">账号密码登录</span>
 
       <div class="item">
-        <div class="left">手机号码</div>
+        <div class="left">账号</div>
         <!-- <img src="./images/xg/mobile.png" /> -->
-        <input type="number" v-model="data.username" placeholder="手机号码" />
+        <input type="number" v-model="data.username" placeholder="账号" />
       </div>
       <div class="item">
         <div class="left">密码</div>
@@ -18,7 +20,7 @@
     <div class="login-btn" @click="handleSubmit">登陆</div>
     <div class="footer-btn-cont">
       <div class="register" @click="handleGoRegister">
-        <span>注册</span>
+        <span>快速注册</span>
       </div>
       <div class="forget" @click="handleForgetPassword">忘记密码</div>
     </div>

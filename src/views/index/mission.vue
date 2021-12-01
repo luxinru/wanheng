@@ -1,14 +1,17 @@
 <template>
   <div class="index-container">
-    <div class="header">
+    <!-- <div class="header">
       <div class="head">
         <van-icon class="iconLeft" name="arrow-left" @click="$router.go(-1)" />
         <span>任务中心</span>
       </div>
-    </div>
+    </div> -->
     <div class="header-cont">
-      <span>做任务 领积分红包</span>
+      <div>
+        <span>做任务 领积分红包</span>
       <span>总积分：{{ data.integral || 0 }}</span>
+      </div>
+      <img src="@/assets/wanheng/01152123-04@2x.png" alt="">
     </div>
     <div class="index-content">
       <div class="task-list-box">
@@ -238,7 +241,7 @@ export default {
     // if (this.$parent.getFooterType() === 'n2') {
     // 	this.$router.replace('/user');
     // }
-    this.$parent.footer(false);
+    this.$parent.footer(true, 'mission');
 
     var type = localStorage.getItem("footer");
     if (type) {
@@ -380,23 +383,37 @@ export default {
   }
   .header-cont {
     width: 100%;
-    height: 106px;
+    height: 219px;
     display: flex;
-    padding: 22px 18px;
-    box-sizing: border-box;
-    background: url("~@/assets/wanheng/01152123-04@2x.png") no-repeat;
-    background-size: 100% 100%;
-    display: flex;
-    flex-direction: column;
+    background: RGBA(218, 133, 52, 1);
 
-    span {
-      font-size: 25px;
-      color: #ffffff;
-
-      &:last-child {
-        font-size: 20px;
-        margin-top: 18px;
+    div {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      margin-left: 19px;
+      margin-top: 22px;
+      span {
+        width: 100%;
+        font-size: 25px;
+        font-weight: normal;
+        color: #FFFFFF;
+        display: flex;
+        align-items: center;
+  
+        &:last-child {
+          font-size: 20px;
+          font-weight: 400;
+          color: #FFFFFF;
+          margin-top: 16px;
+        }
       }
+    }
+
+    img {
+      width: 71px;
+      height: 93px;
+      margin: 7px 37px 0 0;
     }
   }
 

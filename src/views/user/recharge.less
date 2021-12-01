@@ -1,90 +1,79 @@
 .recharge-container {
-  padding-bottom: 20px;
-  background-color: #FAFAFA;
+  position: relative;
+  min-height: 100%;
+  background-color: #fafafa;
   font-family: PingFang SC;
   display: flex;
   flex-direction: column;
+  align-items: center;
+
+  .box {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 101px;
+    background: rgba(250, 218, 161, 1);
+  }
 
   .balance {
-    width: 100%;
-    height: 180px;
+    width: 324px;
+    height: 169px;
     display: flex;
     flex-direction: column;
-    background: url(../../assets/images/背景@2x.png) no-repeat;
+    justify-content: center;
+    margin-top: 3px;
+    background: url('~@/assets/wanheng/充值中心_slices/保@2x.png');
     background-size: 100% 100%;
 
     .label {
       width: 100%;
-      height: 17px;
-      font-size: 12px;
+      font-size: 22px;
       font-family: PingFang SC-Regular, PingFang SC;
       font-weight: 400;
-      color: #FFFFFF;
-      margin-top: 21px;
+      color: rgba(70, 70, 70, 1);
       display: flex;
       align-items: center;
-      justify-content: center;
+      margin-left: 28px;
     }
 
     .value {
       width: 100%;
-      height: 48px;
-      font-size: 34px;
+      font-size: 22px;
       font-family: PingFang SC-Semibold, PingFang SC;
       font-weight: 600;
-      color: #FFFFFF;
+      color: rgba(70, 70, 70, 1);
       display: flex;
       align-items: center;
-      justify-content: center;
+      margin-left: 28px;
+      margin-top: 10px;
     }
   }
 
-  .apply-form-money {
-    width: 342px;
-    height: 123px;
-    background: #FFFFFF;
-    box-shadow: 0px 2px 22px 1px rgba(0, 0, 0, 0.15000000596046448);
-    border-radius: 10px;
+  .textBox {
+    width: 100%;
+    background-color: #ffffff;
     display: flex;
     flex-direction: column;
-    margin: -80px auto 0;
+    padding: 0 36px;
+    box-sizing: border-box;
 
-    &-input {
-      margin: 16px 40px 0;
-      height: 68px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-sizing: border-box;
-      border-bottom: 1px solid rgba(204, 204, 204, 1);
+    .cash-type,
+    .pwd-tips {
+      margin-top: 24px;
+      font-size: 16px;
+      font-family: PingFang SC;
+      font-weight: 500;
+      color: rgba(204, 148, 53, 1);
+      text-align: left;
+    }
 
-      span {
-        width: 30px;
-        height: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 36px;
-      }
-
-      /deep/.van-field {
-        padding: 0;
-        height: 43px;
-        background: #F9F9FC;
-        border-radius: 7px;
-
-        .van-field__body {
-          height: 100%;
-
-          input {
-            height: 100%;
-            padding: 10px 10px;
-            text-align: center;
-            font-weight: bold;
-            font-size: 20px;
-          }
-        }
-      }
+    input {
+      width: 100%;
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #ADADAD;
     }
   }
 
@@ -120,7 +109,7 @@
   .recharge-btn {
     width: 343px;
     height: 49px;
-    background: #FF8A35;
+    background: RGBA(204, 148, 53, 1);
     border-radius: 27px;
     display: flex;
     align-items: center;

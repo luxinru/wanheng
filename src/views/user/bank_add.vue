@@ -1,11 +1,5 @@
 <template>
   <div class="page">
-    <!-- <div class="main">
-            <van-field class="vantField" v-model.trim="bank.bank" :left-icon='leftImg' label="所属银行" placeholder="请填写所属银行" />
-            <van-field class="vantField" v-model.trim="bank.card" :left-icon='leftBank'  label="卡号" placeholder="请填写账号"/>
-            <van-field  class="vantField employee-input" v-model.trim="employeeName" :left-icon='leftMine' label="持卡人" readonly placeholder="请填写持卡人" />
-            <van-field class="vantField" v-model.trim="bank.area" :left-icon='leftMine' label="开户地址" placeholder="请填写开户地址"/>
-        </div> -->
     <div class="main">
       <div class="item">
         <span>所属银行</span>
@@ -131,7 +125,7 @@ export default {
     bottom: 96px;
     width: 343px;
     height: 49px;
-    background: #FF8A35;
+    background: rgba(250, 218, 161, 1);
     border-radius: 27px;
     display: flex;
     align-items: center;

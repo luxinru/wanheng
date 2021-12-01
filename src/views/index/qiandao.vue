@@ -1,63 +1,27 @@
 <template>
   <div class="qiandao-page">
-    <!-- <div class="header">
-		    <div class="head">
-		        <a @click="$router.back()" class="back"></a>
-		        每日签到
-		    </div>
-		</div> -->
-    <div class="headerBox">
-      <div class="header">
-        <div class="head">
-          <van-icon
-            class="iconLeft"
-            name="arrow-left"
-            @click="$router.back()"
-          />
-          <span>连续签到兑换礼品</span>
-          <div>
-            <!-- <img class="question" src="./image/question.png" alt="" @click="handleGoBaoKugz"> -->
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="headerminBox"></div>
-    <div class="tips">连续签到3天可领取好礼</div>
+    <section class="header">
+      <van-icon
+        class="back"
+        name="arrow-left"
+        color="#fff"
+        @click="$router.go(-1)"
+      />
+    </section>
     <div class="middleBox">
-      <div class="middleBox_info">
-        <div class="item">
-          <span class="value" style="color: rgba(255, 138, 53, 1)">{{ qiandaoNum }}天</span>
-          <span class="label">已连续签到</span>
-        </div>
-        <div class="item">
-          <span class="value">{{ qiandaoallNum }}天</span>
-          <span class="label">累计签到</span>
-        </div>
-        <div class="item">
-          <span class="value">{{ qiandaoNum }}天</span>
-          <span class="label">最长连续签到</span>
-        </div>
+      <span class="title">已成功打卡</span>
+      <span class="value">{{ qiandaoallNum }}天</span>
+      <div class="tips">
+        本活动按要求坚持连续打卡签到完成,即可领取以下奖品,请务必填清楚详情收货地址。
       </div>
-      <div class="btn already" @click="handleTreeListItemClick(1)">立即签到</div>
-      <div class="middleBox_tips">
-        本活动按要求坚持连续打卡签到完成，即可领取以下奖品，请务必填清楚详情收货地址。
-      </div>
+      <div class="btn" @click="handleTreeListItemClick(1)">立即签到</div>
     </div>
-    <div class="people">
-      <div class="part">
-        <img
-          v-for="index in 5"
-          :key="index"
-          src="@/assets/images/签到页_slices/配图-按摩仪@2x.png"
-          alt=""
-        />
-      </div>
-      <div class="part"><span>{{ countNum }}</span>人已参与</div>
-    </div>
+
     <div class="goods_list">
       <div class="title">
-        <img src="@/assets/images/left@2x.png" alt="" />
-        奖品预览
+        <span></span>
+        签到礼遇
+        <span></span>
       </div>
 
       <div class="content">
@@ -110,17 +74,7 @@ export default {
     };
   },
   created() {
-    if (this.$parent.getFooterType() === "n1") {
-      // this.$router.push('/tree').catch(err => {
-      // 	err
-      // });
-      this.$parent.footer(true, "tree");
-    } else {
-      this.$parent.footer(true, "tree");
-      this.$data.footer_type = "n2";
-    }
-
-    // this.$parent.footer(false);
+    this.$parent.footer(false);
   },
   mounted() {
     this.start();
@@ -533,115 +487,59 @@ export default {
 
 <style lang="less" scoped>
 .middleBox {
-  width: 343px;
-  background: #ffffff;
-  box-shadow: 0px 2px 22px 1px rgba(0, 0, 0, 0.15000000596046448);
-  border-radius: 10px;
-  margin: 23px auto 0;
+  width: 342px;
+  height: 220px;
   display: flex;
   flex-direction: column;
-  padding: 16px;
-  box-sizing: border-box;
+  align-items: center;
+  margin-top: 491px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 7px;
 
-  .middleBox_info {
-    width: 100%;
-    height: 45px;
-    display: flex;
-    .item {
-      flex: 1 0;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      align-items: center;
+  .title {
+    font-size: 16px;
+    font-weight: 500;
+    color: #ED1A23;
+    margin-top: 17px;
+  }
 
-      .value {
-        font-size: 20px;
-        font-family: PingFang SC-Medium, PingFang SC;
-        font-weight: 500;
-        color: rgba(51, 51, 51, 1);
-      }
+  .value {
+    font-size: 31px;
+    font-weight: 500;
+    color: #ED1A23;
+    margin-top: 18px;
 
-      .label {
-        font-size: 12px;
-        font-family: PingFang SC-Regular, PingFang SC;
-        font-weight: 400;
-        color: #b3b3b3;
-        line-height: 14px;
-      }
+    &::after {
+      content: '天';
+      margin-left: 4px;
+      font-size: 16px;
     }
+  }
+
+  .tips {
+    width: 301px;
+    font-size: 13px;
+    font-weight: 400;
+    color: #373737;
+    line-height: 20px;
+    margin-top: 20px;
   }
 
   .btn {
-    width: 100%;
-    height: 44px;
-    background: #ff8a35;
-    border-radius: 22px;
-    margin-top: 16px;
+    width: 191px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 16px;
-    font-family: PingFang SC-Medium, PingFang SC;
-    font-weight: 500;
-    color: #ffffff;
-  }
-
-  .already {
-    opacity: 0.5;
-  }
-
-  .middleBox_tips {
-    margin-top: 16px;
-    width: 100%;
-    font-size: 11px;
-    font-family: PingFang SC-Regular, PingFang SC;
+    font-size: 15px;
     font-weight: 400;
-    color: #666666;
-    line-height: 13px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    word-break: break-all;
-    text-align: center;
+    color: #FFFFFF;
+    background: url('~@/assets/wanheng/签到_slices/矩形 6 拷贝@2x.png') no-repeat;
+    background-size: 100% 100%;
+    margin-top: 21px;
   }
 }
 
-.people {
-  width: 100%;
-  height: 34px;
-  display: flex;
-  padding: 0 16px;
-  box-sizing: border-box;
-  margin-top: 16px;
-
-  .part {
-    flex: 1 0;
-    display: flex;
-    align-items: center;
-
-    font-size: 14px;
-    font-family: PingFang SC-Regular, PingFang SC;
-    font-weight: 400;
-    color: rgba(102, 102, 102, 1);
-
-    &:last-child {
-      justify-content: flex-end;
-    }
-
-    span {
-      color: rgba(255, 138, 53, 1);
-    }
-
-    img {
-      width: 24px;
-      height: 24px;
-      border-radius: 50%;
-      margin-left: -6px;
-      border: 2px solid #fff;
-    }
-  }
-}
 .goodsBox {
   // width: 375px;
   // height: 437px;
@@ -655,77 +553,39 @@ export default {
   background: url("~@/assets/images/签到页_slices/标题@2x.png");
   background-size: 100% 100%;
 }
-.tips {
-  width: 252px;
-  height: 39px;
-  background: linear-gradient(180deg, #fdf5d5 0%, #f9dca7 100%);
-  box-shadow: 0px 2px 2px 1px rgba(0, 0, 0, 0.25);
-  border-radius: 25px;
-  border-image: linear-gradient(
-      360deg,
-      rgba(179.000004529953, 106.00000128149986, 37.00000159442425, 1),
-      rgba(179.000004529953, 106.00000128149986, 37.00000159442425, 0)
-    )
-    1 1;
-  margin: 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 16px;
-  font-family: PingFang SC-Medium, PingFang SC;
-  font-weight: 500;
-  color: #b36a25;
-}
-.head {
-  display: flex;
-  justify-content: space-between;
-  // padding: 0 13px;
-  background-color: rgba(0, 0, 0, 0);
-  border: none;
-  color: #fff;
-  .iconLeft {
-    position: relative;
-    top: 12px;
-    font-size: 22px;
-  }
-
-  .question {
-    width: 19px;
-  }
-  > div,
-  > i {
-    width: 50px;
-    text-align: center;
-  }
-  > i {
-    text-align: left;
-  }
-}
 
 .goods_list {
   width: 100%;
   display: flex;
   flex-direction: column;
-  margin-top: 28px;
+  margin-top: 26px;
   padding: 12px;
   box-sizing: border-box;
+  background-color: rgba(181, 18, 33, 1);
 
   .title {
     width: 100%;
-    height: 29px;
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 21px;
-    font-family: PingFang SC-Semibold, PingFang SC;
-    font-weight: 600;
-    color: #333333;
     margin-bottom: 12px;
+    font-size: 18px;
+    font-weight: 500;
+    color: #FFFFFF;
+    opacity: 0.8;
 
-    img {
-      width: 24px;
-      height: 29px;
-      margin: 0 5px;
+    span {
+      width: 18px;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.8);
+
+      &:first-child {
+        margin-right: 7px;
+      }
+
+      &:last-child {
+        margin-left: 7px;
+      }
     }
   }
 
@@ -780,11 +640,28 @@ export default {
 }
 
 .qiandao-page {
-  min-height: 100vh;
-  background-image: url("~@/assets/images/签到页_slices/bg-签到@2x.png");
-  background-size: contain;
-  background-color: #fff;
-  background-repeat: no-repeat;
-  padding-bottom: 100px;
+  position: relative;
+  width: 100%;
+  height: 812px;
+  background: url('~@/assets/wanheng/签到_slices/组 11@2x.png') no-repeat;
+  background-size: 100% 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    align-items: center;
+
+    .back {
+      position: absolute;
+      left: 10px;
+    }
+  }
 }
 </style>

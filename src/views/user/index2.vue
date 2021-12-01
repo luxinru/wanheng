@@ -1,6 +1,6 @@
 <template>
   <div class="my-index-container">
-    <div class="my-index-header"></div>
+    <!-- <div class="my-index-header"></div> -->
 
     <div class="my-assets-content">
       <div class="my-assets-content-vipname">{{ data.vip_name }}</div>
@@ -22,8 +22,8 @@
     </div>
 
     <div class="btns">
-      <span>充值</span>
-      <span>提现</span>
+      <span @click="handleRecharge">充值</span>
+      <span @click="handleWithdraw">提现</span>
     </div>
 
     <div class="my_user_info_list">
@@ -60,7 +60,7 @@
         </div>
         <van-icon name="arrow" size="23" color="rgba(73, 81, 92, 1)" />
       </div>
-      <div class="item">
+      <div class="item" @click="handleMyService('notice')">
         <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/1@2x.png" alt="" />
           站内信
@@ -140,6 +140,16 @@
         <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/图层 10@2x.png" alt="" />
           隐私协议
+        </div>
+        <van-icon name="arrow" size="23" color="rgba(73, 81, 92, 1)" />
+      </div>
+    </div>
+
+    <div class="fun_box">
+      <div class="item" @click="logout">
+        <div class="left">
+          <img src="@/assets/wanheng/＜剪切组＞@2x.png" alt="" />
+          退出登录
         </div>
         <van-icon name="arrow" size="23" color="rgba(73, 81, 92, 1)" />
       </div>

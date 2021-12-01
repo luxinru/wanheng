@@ -1,6 +1,7 @@
 .register-container {
+  width: 100%;
   height: 100%;
-  background-color: white;
+  background-color: RGBA(254, 251, 244, 1);
   font-family: PingFang SC;
   display: flex;
   flex-direction: column;
@@ -25,34 +26,24 @@
   .register-box {
     position: relative;
     width: 100%;
-    padding: 0 12px;
+    padding: 0 26px;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: center;
-
-    .img {
-      width: 100px;
-      height: 100px;
-      border-radius: 50%;
-      margin: 50px auto;
-    }
+    margin-top: 50px;
 
     .item {
+      width: 100%;
+      height: 40px;
+      border-bottom: 1px solid rgba(214, 214, 214, 1);
+      margin-top: 16px;
       display: flex;
       align-items: center;
-      width: 280px;
-      height: 37px;
-      border: 1px solid rgba(214, 214, 214, 0.5);
-      border-radius: 3px;
-      padding: 0 6px;
-      margin-top: 16px;
-
-      &:first-child {
-        margin-top: 0;
-      }
+      box-sizing: border-box;
 
       .left {
-        width: 60px;
+        width: 70px;
         flex-shrink: 0;
         font-size: 14px;
         font-weight: 400;
@@ -61,67 +52,30 @@
         height: 100%;
         display: flex;
         align-items: center;
-        justify-content: flex-end;
-      }
-
-      img {
-        width: 15px;
-        height: 21px;
-        margin-right: 18px;
-        flex-shrink: 0;
+        justify-content: flex-start;
       }
 
       input {
+        flex: 1 0;
         // font-size: 16px;
         // font-weight: 500;
         // color: #B1B4BA;
         // background-color: transparent;
         background-color: rgba(244, 244, 244, 1);
         border-radius: 13px;
-        width: 100%;
         height: 100%;
         font-size: 16px;
         font-weight: 400;
         color: #333333;
         opacity: 0.4;
-        margin-left: 16px;
+        // margin-left: 16px;
       }
 
-      .code-btn-cont {
-        display: flex;
-        align-items: center;
-
-        input {
-          flex: 1 0;
-        }
-
-        .code-btn {
-          // line-height: 57px;
-          // color: #fff;
-          flex-shrink: 0;
-          // width: 123px;
-          // height: 47px;
-          text-align: center;
-          font-size: 15px;
-          font-weight: 400;
-          color: #ffffff;
-          // margin-left: 14px;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          background: #ff8a35;
-          // border-radius: 30px 30px 30px 30px;
-          // margin-left: 24px;
-          padding: 2px 4px;
-          border-radius: 8px;
-        }
-      }
-
-      &:nth-child(5) {
-        img {
-          width: 15px;
-          height: 13px;
-        }
+      .code-btn {
+        flex-shrink: 0;
+        font-size: 15px;
+        font-weight: 400;
+        color: #000000;
       }
     }
   }
@@ -149,24 +103,32 @@
 
   .register-btn {
     margin-top: 24px;
-    color: #ffffff;
-    background: RGBA(221, 153, 93, 1);
-    border-radius: 8px;
+    width: 320px;
+    height: 44px;
+    background: rgba(226, 171, 73, 1);
+    border-radius: 36px;
     box-sizing: border-box;
-    padding: 7px 5px;
-    font-size: 14px;
-    font-weight: 400;
+    font-size: 12px;
+    font-weight: bold;
+    color: #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .login-btn {
-    width: 100%;
+    margin-top: 16px;
+    width: 320px;
+    height: 44px;
+    background: RGBA(255, 231, 187, 1);
+    border-radius: 36px;
+    box-sizing: border-box;
+    font-size: 12px;
+    font-weight: bold;
+    color: rgba(226, 171, 73, 1);
     display: flex;
+    align-items: center;
     justify-content: center;
-    font-size: 14px;
-    font-family: PingFang SC-Regular, PingFang SC;
-    font-weight: 400;
-    color: #FF8A35;
-    margin: 12px 0 90px 0;
   }
 
   .register-footer {
