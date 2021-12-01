@@ -22,7 +22,7 @@
       <div class="register" @click="handleGoRegister">
         <span>快速注册</span>
       </div>
-      <div class="forget" @click="handleForgetPassword">忘记密码</div>
+      <!-- <div class="forget" @click="handleForgetPassword">忘记密码</div> -->
     </div>
     <!-- <div class="login-footer">
 			<div>登录即代表同意</div>
