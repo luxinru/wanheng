@@ -63,6 +63,12 @@
           >
             {{ mission.invest_status == true ? "已完成" : "去完成" }}
           </div> -->
+          <div
+            class="task-list-item-right"
+            @click="handleTaskListItem(9)"
+          >
+            去完成
+          </div>
         </div>
 
         <div class="task-list-item">
@@ -97,6 +103,12 @@
           >
             {{ mission.yue_bao_status ? "已完成" : "去完成" }}
           </div> -->
+          <div
+            class="task-list-item-right"
+            @click="handleTaskListItem(6)"
+          >
+            去完成
+          </div>
         </div>
 
         <div class="task-list-item">
@@ -131,6 +143,12 @@
           >
             {{ mission.answer_status ? "已完成" : "去完成" }}
           </div> -->
+          <div
+            class="task-list-item-right"
+            @click="handleTaskListItem(5)"
+          >
+            去完成
+          </div>
         </div>
 
         <!-- <div class="task-list-item">
@@ -361,6 +379,9 @@ export default {
           break;
         case 8:
           this.$router.push({ name: "wenjuan" });
+          break;
+        case 9:
+          this.$router.push({ name: "alipay" });
           break;
       }
     },
