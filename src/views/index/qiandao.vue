@@ -10,7 +10,7 @@
     </section>
     <div class="middleBox">
       <span class="title">已成功打卡</span>
-      <span class="value">{{ qiandaoallNum }}天</span>
+      <span class="value">{{ qiandaoallNum }}</span>
       <div class="tips">
         本活动按要求坚持连续打卡签到完成,即可领取以下奖品,请务必填清楚详情收货地址。
       </div>
