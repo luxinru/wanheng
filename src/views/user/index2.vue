@@ -70,8 +70,8 @@
     </div>
 
     <div class="fun_box">
-      <div class="item">
-        <div class="left" @click="$router.push({ name: 'invest' })">
+      <div class="item" @click="$router.push({ name: 'invest' })">
+        <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/图层 3@2x.png" alt="" />
           充值记录
         </div>
@@ -98,8 +98,8 @@
     </div>
 
     <div class="fun_box">
-      <div class="item">
-        <div class="left" @click="handleGoFunds">
+      <div class="item" @click="handleGoFunds">
+        <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/图层 6@2x.png" alt="" />
           资金明细
         </div>
@@ -129,14 +129,20 @@
         </div>
         <van-icon name="arrow" size="23" color="rgba(73, 81, 92, 1)" />
       </div>
-      <div class="item" @click="$router.push({ path: config.user_contract_link })">
+      <div
+        class="item"
+        @click="$router.push({ path: config.user_contract_link })"
+      >
         <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/图层 9@2x.png" alt="" />
           服务协议
         </div>
         <van-icon name="arrow" size="23" color="rgba(73, 81, 92, 1)" />
       </div>
-      <div class="item" @click="$router.push({ path: config.user_contract_ys_link })">
+      <div
+        class="item"
+        @click="$router.push({ path: config.user_contract_ys_link })"
+      >
         <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/图层 10@2x.png" alt="" />
           隐私协议
@@ -252,56 +258,56 @@
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
-import Vue from "vue";
-import { NoticeBar } from "vant";
+import Fetch from '../../utils/fetch'
+import Vue from 'vue'
+import { NoticeBar } from 'vant'
 
-Vue.use(NoticeBar);
+Vue.use(NoticeBar)
 
 export default {
-  name: "info",
-  data() {
+  name: 'info',
+  data () {
     return {
       data: {},
       /* 待删除 */
-      bg: "",
+      bg: '',
       config: {},
       /* 待删除 */
       infoListOne: [
         {
-          key: "invest",
-          name: "充值记录",
-          style: { width: "20px", height: "18px" },
+          key: 'invest',
+          name: '充值记录',
+          style: { width: '20px', height: '18px' }
         },
         {
-          key: "cost",
-          name: "提现记录",
-          style: { width: "16px", height: "16px" },
+          key: 'cost',
+          name: '提现记录',
+          style: { width: '16px', height: '16px' }
         },
         {
-          key: "funds",
-          name: "资金明细",
-          style: { width: "15px", height: "15px" },
+          key: 'funds',
+          name: '资金明细',
+          style: { width: '15px', height: '15px' }
         },
         {
-          key: "share",
-          name: "邀请好友",
-          subTitle: "邀请好友获得奖励",
-          style: { width: "39px", height: "39px" },
-        },
+          key: 'share',
+          name: '邀请好友',
+          subTitle: '邀请好友获得奖励',
+          style: { width: '39px', height: '39px' }
+        }
       ],
       infoListTwo: [
         {
-          key: "account",
-          name: "账户信息",
-          subTitle: "修改登陆密码和支付密码",
-          style: { width: "39px", height: "39px" },
+          key: 'account',
+          name: '账户信息',
+          subTitle: '修改登陆密码和支付密码',
+          style: { width: '39px', height: '39px' }
         },
         {
-          key: "notice",
-          name: "站内信",
-          style: { width: "39px", height: "39px" },
-        },
+          key: 'notice',
+          name: '站内信',
+          style: { width: '39px', height: '39px' }
+        }
         // {
         //   key: 'quanbao',
         //   name: '优惠券',
@@ -326,176 +332,176 @@ export default {
       ],
       infoListThree: [
         {
-          key: "logout",
-          name: "退出登录",
-          style: { width: "39px", height: "39px" },
-        },
+          key: 'logout',
+          name: '退出登录',
+          style: { width: '39px', height: '39px' }
+        }
       ],
       infoListFour: [
         {
-          key: "invest",
-          name: "充值记录",
-          style: { width: "20px", height: "18px" },
+          key: 'invest',
+          name: '充值记录',
+          style: { width: '20px', height: '18px' }
         },
         {
-          key: "cost",
-          name: "提现记录",
-          style: { width: "16px", height: "16px" },
+          key: 'cost',
+          name: '提现记录',
+          style: { width: '16px', height: '16px' }
         },
         {
-          key: "touzi",
-          name: "投资记录",
-          style: { width: "18px", height: "15px" },
+          key: 'touzi',
+          name: '投资记录',
+          style: { width: '18px', height: '15px' }
         },
         {
-          key: "funds",
-          name: "资金明细",
-          style: { width: "15px", height: "15px" },
-        },
+          key: 'funds',
+          name: '资金明细',
+          style: { width: '15px', height: '15px' }
+        }
       ],
       infoListFive: [
         {
-          key: "logout",
-          name: "退出登录",
-          style: { width: "16px", height: "16px" },
-        },
+          key: 'logout',
+          name: '退出登录',
+          style: { width: '16px', height: '16px' }
+        }
       ],
       infoListOther: [
         {
-          key: "order",
-          name: "商城订单",
-          style: { width: "14px", height: "16px" },
+          key: 'order',
+          name: '商城订单',
+          style: { width: '14px', height: '16px' }
         },
         {
-          key: "plantTree",
-          name: "种树记录",
-          style: { width: "16px", height: "17px" },
+          key: 'plantTree',
+          name: '种树记录',
+          style: { width: '16px', height: '17px' }
         },
         {
-          key: "shuidi",
-          name: "水滴记录",
-          style: { width: "12px", height: "18px" },
+          key: 'shuidi',
+          name: '水滴记录',
+          style: { width: '12px', height: '18px' }
         },
         {
-          key: "strategy",
-          name: "种树攻略",
-          style: { width: "14px", height: "17px" },
+          key: 'strategy',
+          name: '种树攻略',
+          style: { width: '14px', height: '17px' }
         },
         {
-          key: "auth",
-          name: "实名认证",
-          style: { width: "17px", height: "17 px" },
+          key: 'auth',
+          name: '实名认证',
+          style: { width: '17px', height: '17 px' }
         },
         {
-          key: "alipay",
-          name: "绑定支付宝",
-          style: { width: "15px", height: "15px" },
+          key: 'alipay',
+          name: '绑定支付宝',
+          style: { width: '15px', height: '15px' }
         },
         {
-          key: "qiandao",
-          name: "签到礼品",
-          style: { width: "16px", height: "14px" },
+          key: 'qiandao',
+          name: '签到礼品',
+          style: { width: '16px', height: '14px' }
         },
         {
-          key: "help",
-          name: "帮助中心",
-          style: { width: "18px", height: "18px" },
-        },
-      ],
-    };
-  },
-  created() {
-    if (this.$parent.getFooterType() === "n2") {
-      this.$router.replace("/user").catch((err) => {
-        err;
-      });
+          key: 'help',
+          name: '帮助中心',
+          style: { width: '18px', height: '18px' }
+        }
+      ]
     }
-    this.$parent.footer(true, "info");
   },
-  mounted() {
-    this.start();
+  created () {
+    if (this.$parent.getFooterType() === 'n2') {
+      this.$router.replace('/user').catch(err => {
+        err
+      })
+    }
+    this.$parent.footer(true, 'info')
+  },
+  mounted () {
+    this.start()
   },
   methods: {
-    start() {
+    start () {
       // 修复个别手机不能滚动到顶端
       setTimeout(() => {
-        var element = document.getElementById("app");
-        element.scrollIntoView();
-      }, 0);
-      document.body.scrollTop = 0;
-      document.documentElement.scrollTop = 0;
-      Fetch("/user/info").then((res) => {
-        this.data = res.data;
+        var element = document.getElementById('app')
+        element.scrollIntoView()
+      }, 0)
+      document.body.scrollTop = 0
+      document.documentElement.scrollTop = 0
+      Fetch('/user/info').then(res => {
+        this.data = res.data
         // console.log(this.data)
-      });
+      })
       /* 待删除 */
-      Fetch("/index/webconfig", {
-        type: "bg",
-      }).then((res) => {
-        this.bg = 'url("' + res.data.login + '")';
-      });
-      Fetch("/index/webconfig", {
-        type: "web",
-      }).then((res) => {
-        this.config = res.data;
-      });
+      Fetch('/index/webconfig', {
+        type: 'bg'
+      }).then(res => {
+        this.bg = 'url("' + res.data.login + '")'
+      })
+      Fetch('/index/webconfig', {
+        type: 'web'
+      }).then(res => {
+        this.config = res.data
+      })
       /* 待删除 */
     },
-    logout() {
-      this.$parent.setFooterType("n1");
-      localStorage.removeItem("token");
-      this.$router.replace("/login");
+    logout () {
+      this.$parent.setFooterType('n1')
+      localStorage.removeItem('token')
+      this.$router.replace('/login')
     },
     // 实名认证
-    handleUSerCertification() {
-      this.$router.push({ name: "auth" });
+    handleUSerCertification () {
+      this.$router.push({ name: 'auth' })
     },
     // 站内信
-    handleUSernnotice() {
-      if (!this.data.is_new_notice) return;
-      this.$router.push({ name: "notice" });
+    handleUSernnotice () {
+      if (!this.data.is_new_notice) return
+      this.$router.push({ name: 'notice' })
     },
     // 设置
-    handleSetting() {
+    handleSetting () {
       // auth
-      this.$router.push({ name: "account" });
+      this.$router.push({ name: 'account' })
     },
     // 查看明细
-    handleGoFunds() {
-      this.$router.push({ name: "funds" });
+    handleGoFunds () {
+      this.$router.push({ name: 'funds' })
     },
     // 充值
-    handleRecharge() {
-      this.$router.push({ name: "recharge" });
+    handleRecharge () {
+      this.$router.push({ name: 'recharge' })
     },
     // 提现
-    handleWithdraw() {
-      this.$router.push({ name: "cash" });
+    handleWithdraw () {
+      this.$router.push({ name: 'cash' })
     },
     // 我的服务跳转
-    handleMyService(name) {
-      if (name === "protocol") {
-        this.handleGoProtocol(1);
-        return;
+    handleMyService (name) {
+      if (name === 'protocol') {
+        this.handleGoProtocol(1)
+        return
       }
-      if (name === "privacy") {
-        this.handleGoProtocol(2);
-        return;
+      if (name === 'privacy') {
+        this.handleGoProtocol(2)
+        return
       }
-      this.$router.push({ name: name });
+      this.$router.push({ name: name })
     },
     // 协议
-    handleGoProtocol(type) {
+    handleGoProtocol (type) {
       if (type === 1) {
-        this.$router.push({ path: this.config.user_contract_link });
+        this.$router.push({ path: this.config.user_contract_link })
       }
       if (type === 2) {
-        this.$router.push({ path: this.config.user_contract_ys_link });
+        this.$router.push({ path: this.config.user_contract_ys_link })
       }
-    },
-  },
-};
+    }
+  }
+}
 </script>
 <style lang="less" scoped>
-@import "index2";
+@import 'index2';
 </style>
