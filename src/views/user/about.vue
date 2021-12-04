@@ -17,6 +17,13 @@
         <div>{{ item.title }}</div>
         <div><van-icon name="arrow" size="18" color="#C3C3C6" /></div>
       </div>
+      <div
+        class="about-list-item"
+        @click="$router.push('contact')"
+      >
+        <div>联系我们</div>
+        <div><van-icon name="arrow" size="18" color="#C3C3C6" /></div>
+      </div>
     </div>
   </div>
 </template>

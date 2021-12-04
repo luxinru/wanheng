@@ -48,9 +48,9 @@
     <div class="qrcode_box" v-if="is_show_share">
       <div class="content">
         <img :src="data.share_image_url" class="qrcode" />
-        <p class="qrcode_tips">扫描二维码，邀请好友加入</p>
-        <div class="qrcode_btn" @click="close">立即邀请</div>
-        <img class="close" src="@/assets/wanheng/邀请有礼_slices/形状 1@2x.png" alt="" @click="is_show_share = false">
+        <!-- <p class="qrcode_tips">扫描二维码，邀请好友加入</p> -->
+        <!-- <div class="qrcode_btn" @click="close">立即邀请</div> -->
+        <div class="close" alt="" @click="is_show_share = false"></div>
       </div>
     </div>
   </div>
@@ -269,19 +269,19 @@ export default {
   align-items: center;
   justify-content: center;
   .content {
-    width: 330px;
-    height: 208px;
+    width: 245px;
+    height: 272px;
     box-sizing: border-box;
     border-radius: 10px;
-    background: url('~@/assets/wanheng/邀请有礼_slices/组 1@2x.png');
+    background: url('~@/assets/wanheng/邀请有礼_slices/组 1.png');
     background-size: 100% 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     .qrcode {
-      width: 71px;
-      height: 71px;
-      margin-top: 62px;
+      width: 120px;
+      height: 120px;
+      margin: 40px 10px 0 0;
     }
     .qrcode_tips {
       font-size: 15px;
@@ -303,7 +303,7 @@ export default {
     .close {
       width: 24px;
       height: 24px;
-      margin-top: 24px;
+      margin-top: 90px;
     }
   }
 }

@@ -22,70 +22,69 @@
       </div>
 
       <div class="btn">会员规则</div>
-    </div>
 
-    <div class="table">
-      <div class="title">
-        <span>等级名称</span>
-        <span>成长值限制</span>
-        <span>加息率</span>
+      <div class="table">
+        <div class="title">
+          <span>等级名称</span>
+          <span>成长值限制</span>
+          <span>加息率</span>
+        </div>
+        <div class="body">
+          <span>VIP1</span>
+          <span>5000</span>
+          <span>0.02%</span>
+        </div>
+        <div class="body">
+          <span>VIP2</span>
+          <span>30000</span>
+          <span>0.04%</span>
+        </div>
+        <div class="body">
+          <span>VIP3</span>
+          <span>80000</span>
+          <span>0.08%</span>
+        </div>
+        <div class="body">
+          <span>VIP4</span>
+          <span>150000</span>
+          <span>0.16%</span>
+        </div>
+        <div class="body">
+          <span>VIP5</span>
+          <span>300000</span>
+          <span>0.32%</span>
+        </div>
+        <div class="body">
+          <span>VIP6</span>
+          <span>500000</span>
+          <span>0.58%</span>
+        </div>
+        <div class="body">
+          <span>VIP7</span>
+          <span>1000000</span>
+          <span>0.90%</span>
+        </div>
       </div>
-      <div class="body">
-        <span>VIP1</span>
-        <span>5000</span>
-        <span>0.02%</span>
+      <div class="tip">
+        所有的加息为系统自动加息，达到相应的VIP等级，在项目投资后，自动计算加息比例
       </div>
-      <div class="body">
-        <span>VIP2</span>
-        <span>30000</span>
-        <span>0.04%</span>
-      </div>
-      <div class="body">
-        <span>VIP3</span>
-        <span>80000</span>
-        <span>0.08%</span>
-      </div>
-      <div class="body">
-        <span>VIP4</span>
-        <span>150000</span>
-        <span>0.16%</span>
-      </div>
-      <div class="body">
-        <span>VIP5</span>
-        <span>300000</span>
-        <span>0.32%</span>
-      </div>
-      <div class="body">
-        <span>VIP6</span>
-        <span>500000</span>
-        <span>0.58%</span>
-      </div>
-      <div class="body">
-        <span>VIP7</span>
-        <span>1000000</span>
-        <span>0.90%</span>
-      </div>
-    </div>
-
-    <div class="tip">
-      所有的加息为系统自动加息，达到相应的VIP等级，在项目投资后，自动计算加息比例
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "Vip",
+  name: 'Vip',
   components: {},
-  data() {
-    return {};
+  data () {
+    return {}
   },
-  created() {
-    this.$parent.footer(false);
+  created () {
+    this.$parent.footer(false)
   },
-  mounted() {},
-  methods: {},
-};
+  mounted () {},
+  methods: {}
+}
 </script>
 
 <style lang="less" scoped>
@@ -95,6 +94,7 @@ export default {
   height: 100%;
   display: flex;
   flex-direction: column;
+  overflow: scroll;
 
   .box {
     position: absolute;
@@ -108,6 +108,9 @@ export default {
   }
 
   .header {
+    position: absolute;
+    top: 0;
+    left: 0;
     background: transparent;
     .head {
       background: transparent;
@@ -117,11 +120,12 @@ export default {
   .content {
     width: 100%;
     height: 100%;
-    background: url("~@/assets/wanheng/会员等级_slices/组 11@2x.png") no-repeat;
+    background: url('~@/assets/wanheng/会员等级_slices/组 11@2x.png') no-repeat;
     background-size: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 24px;
 
     .info_box {
       width: 300px;
@@ -149,61 +153,61 @@ export default {
       justify-content: center;
       margin-top: 219px;
     }
-  }
 
-  .table {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    padding: 0 37px;
-    margin-top: -64px;
-
-    .title {
-      font-size: 14px;
-      font-weight: normal;
-      color: #2f2c28;
-      display: flex;
-      align-items: center;
-
-      span {
-        flex: 1 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-    }
-
-    .body {
+    .table {
       width: 100%;
-      height: 24px;
       display: flex;
-      align-items: center;
-      background: RGBA(194, 163, 109, 1);
-      margin-top: 8px;
-      span {
-        flex: 1 0;
-        display: flex;
-        align-items: center;
-        justify-content: center;
+      flex-direction: column;
+      padding: 0 37px;
+      margin-top: 14px;
+
+      .title {
         font-size: 14px;
         font-weight: normal;
-        color: #ffffff;
+        color: #2f2c28;
+        display: flex;
+        align-items: center;
+
+        span {
+          flex: 1 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      .body {
+        width: 100%;
+        height: 24px;
+        display: flex;
+        align-items: center;
+        background: RGBA(194, 163, 109, 1);
+        margin-top: 8px;
+        span {
+          flex: 1 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 14px;
+          font-weight: normal;
+          color: #ffffff;
+        }
       }
     }
-  }
 
-  .tip {
-    width: calc(100% - 44px);
-    height: 93px;
-    margin: 24px 22px;
-    font-size: 14px;
-    font-weight: 400;
-    color: #C2A36D;
-    line-height: 19px;
-    display: flex;
-    background: RGBA(68, 67, 98, 1);
-    align-items: center;
-    padding: 0 22px;
+    .tip {
+      width: calc(100% - 44px);
+      height: 93px;
+      margin: 24px 22px;
+      font-size: 14px;
+      font-weight: 400;
+      color: #c2a36d;
+      line-height: 19px;
+      display: flex;
+      background: RGBA(68, 67, 98, 1);
+      align-items: center;
+      padding: 0 22px;
+    }
   }
 }
 </style>

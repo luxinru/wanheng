@@ -309,6 +309,13 @@ export default new Router({
         import(/* webpackChunkName: "home" */ './views/user/about.vue')
     },
     {
+      path: '/contact',
+      name: 'contact',
+      meta: { title: '联系我们' },
+      component: () =>
+        import(/* webpackChunkName: "home" */ './views/user/contact.vue')
+    },
+    {
       path: '/item/:id',
       name: 'details',
       meta: { title: '投资详情', background: '#fff', color: '#000' },
@@ -574,6 +581,13 @@ export default new Router({
       meta: { title: '问卷调查' },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/questionnaire.vue')
+    },
+    {
+      path: '/pengyouquan',
+      name: 'pengyouquan',
+      meta: { title: '分享朋友圈', hiddenTitle: true },
+      component: () =>
+        import(/* webpackChunkName: "home" */ './views/index/pengyouquan.vue')
     },
     {
       path: '/wenjuan',

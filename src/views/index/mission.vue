@@ -151,6 +151,29 @@
           </div>
         </div>
 
+        <div class="task-list-item">
+          <div class="task-list-item-left">
+            <div class="item-icon icon-9"></div>
+            <div class="item-title-box">
+              <div class="item-title">分享朋友圈</div>
+              <div class="item-sub-title">分享朋友圈可获得大额积分</div>
+            </div>
+          </div>
+          <!-- <div
+            class="task-list-item-right"
+            :class="{ 'active-btn': mission.answer_status }"
+            @click="handleTaskListItem(5)"
+          >
+            {{ mission.answer_status ? "已完成" : "去完成" }}
+          </div> -->
+          <div
+            class="task-list-item-right"
+            @click="handleTaskListItem(10)"
+          >
+            去完成
+          </div>
+        </div>
+
         <!-- <div class="task-list-item">
           <div class="task-list-item-left">
             <div class="item-icon icon-8"></div>
@@ -383,6 +406,9 @@ export default {
         case 9:
           this.$router.push({ name: "alipay" });
           break;
+        case 10:
+          this.$router.push({ name: "pengyouquan" });
+          break;
       }
     },
   },
@@ -509,6 +535,9 @@ export default {
           }
           &.icon-8 {
             background-image: url("~@/assets/wanheng/任务中心_slices/图层 8@2x.png");
+          }
+          &.icon-9 {
+            background-image: url("~@/assets/wanheng/任务中心_slices/图层 7@2x.png");
           }
         }
         .item-title-box {
