@@ -408,6 +408,7 @@ export default new Router({
     {
       path: '/kefu',
       name: 'kefu',
+      meta: { hiddenTitle: true },
       component: () =>
         import(/* webpackChunkName: "home" */ './views/user/kefu.vue')
     },

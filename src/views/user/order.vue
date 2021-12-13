@@ -29,7 +29,7 @@
             </div>
             <div class="btns">
               <div class="more" @click="isShow = !isShow">
-                {{ isShow ? "收起更多信息" : "更多信息"
+                {{ isShow ? '收起更多信息' : '更多信息'
                 }}<van-icon
                   color="#666666"
                   style="margin-left: 4px;"
@@ -58,7 +58,7 @@
         </template>
         <template v-else>
           <div class="no_data">
-            <img src="@/assets/images/task/juchuan-task-2.png" alt="">
+            <img src="@/assets/images/task/juchuan-task-2.png" alt="" />
             <span>您目前还没有兑换记录</span>
           </div>
         </template>
@@ -67,40 +67,55 @@
           <div class="sub">您目前还没有兑换记录</div>
         </div> -->
       </van-tab>
-      <van-tab title="待发货">内容 2</van-tab>
-      <van-tab title="已发货">内容 3</van-tab>
-      <van-tab title="已完成">内容 4</van-tab>
+      <van-tab title="待发货">
+        <div class="no_data">
+          <img src="@/assets/images/task/juchuan-task-2.png" alt="" />
+          <span>您目前还没有兑换记录</span>
+        </div>
+      </van-tab>
+      <van-tab title="已发货">
+        <div class="no_data">
+          <img src="@/assets/images/task/juchuan-task-2.png" alt="" />
+          <span>您目前还没有兑换记录</span>
+        </div>
+      </van-tab>
+      <van-tab title="已完成">
+        <div class="no_data">
+          <img src="@/assets/images/task/juchuan-task-2.png" alt="" />
+          <span>您目前还没有兑换记录</span>
+        </div>
+      </van-tab>
     </van-tabs>
   </div>
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
-import Vue from "vue";
-import { NoticeBar } from "vant";
+import Fetch from '../../utils/fetch'
+import Vue from 'vue'
+import { NoticeBar } from 'vant'
 
-Vue.use(NoticeBar);
+Vue.use(NoticeBar)
 
 export default {
-  name: "info",
-  data() {
+  name: 'info',
+  data () {
     return {
-      active: "全部",
+      active: '全部',
       isShow: false,
       data: {
         config: {
-          status: {},
+          status: {}
         },
         list: []
       },
-      status: "S",
-    };
+      status: 'S'
+    }
   },
-  created() {
-    this.$parent.footer(false);
+  created () {
+    this.$parent.footer(false)
   },
-  mounted() {
-    this.start();
+  mounted () {
+    this.start()
   },
   methods: {
     /* start(status = 'S') {
@@ -109,15 +124,15 @@ export default {
                     this.data = res.data;
                 })
             }, */
-    start() {
-      this.status = status;
-      Fetch("/user/shop_order").then((res) => {
+    start () {
+      this.status = status
+      Fetch('/user/shop_order').then(res => {
         console.log('res.data', res.data)
-        this.data = res.data;
-      });
-    },
-  },
-};
+        this.data = res.data
+      })
+    }
+  }
+}
 </script>
 
 <style lang="less">
@@ -213,7 +228,7 @@ export default {
           line-height: 16px;
 
           &::after {
-            content: "金币";
+            content: '金币';
             margin-left: 4px;
           }
         }
@@ -326,7 +341,7 @@ export default {
       font-size: 14px;
       font-family: PingFang SC-Regular, PingFang SC;
       font-weight: 400;
-      color: #B3B3B3;
+      color: #b3b3b3;
       line-height: 16px;
       margin-top: 33px;
     }

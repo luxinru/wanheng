@@ -3,7 +3,7 @@
     <!-- <div class="my-index-header"></div> -->
 
     <div class="my-assets-content">
-      <div class="my-assets-content-vipname">{{ data.vip_name }}</div>
+      <div class="my-assets-content-vipname">普通会员</div>
       <div class="my-assets-content-title">{{ data.mobile }}</div>
       <div class="my-assets-content-content">
         <div class="item" v-if="$parent.getFooterType() === 'n2'">
