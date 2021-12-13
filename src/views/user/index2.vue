@@ -149,6 +149,16 @@
         </div>
         <van-icon name="arrow" size="23" color="rgba(73, 81, 92, 1)" />
       </div>
+      <div
+        class="item"
+        @click="$router.push({ path: '/kefu' })"
+      >
+        <div class="left">
+          <img src="@/assets/icons/icon-myz.png" alt="" />
+          在线客服
+        </div>
+        <van-icon name="arrow" size="23" color="rgba(73, 81, 92, 1)" />
+      </div>
     </div>
 
     <div class="fun_box">
