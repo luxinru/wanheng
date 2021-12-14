@@ -22,11 +22,11 @@
     </div>
 
     <div class="btns">
-      <span @click="handleRecharge">充值</span>
+      <span @click="handleRecharge" v-if="$parent.getFooterType() === 'n2'">充值</span>
       <span @click="handleWithdraw">提现</span>
     </div>
 
-    <div class="my_user_info_list">
+    <div class="my_user_info_list" v-if="$parent.getFooterType() === 'n2'">
       <div class="item">
         <span>{{ data.ds_money }}</span>
         <span>待收本金</span>
@@ -46,14 +46,14 @@
     </div>
 
     <div class="fun_box">
-      <div class="item" @click="$router.push({ name: 'baoku' })">
+      <div class="item" v-if="$parent.getFooterType() === 'n2'" @click="$router.push({ name: 'baoku' })">
         <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/13@2x.png" alt="" />
           存钱罐
         </div>
         <van-icon name="arrow" size="23" color="rgba(73, 81, 92, 1)" />
       </div>
-      <div class="item" @click="handleMyService('vip')">
+      <div class="item" v-if="$parent.getFooterType() === 'n2'" @click="handleMyService('vip')">
         <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/11@2x.png" alt="" />
           会员等级
@@ -70,7 +70,7 @@
     </div>
 
     <div class="fun_box">
-      <div class="item" @click="$router.push({ name: 'invest' })">
+      <div class="item" v-if="$parent.getFooterType() === 'n2'" @click="$router.push({ name: 'invest' })">
         <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/图层 3@2x.png" alt="" />
           充值记录
@@ -98,7 +98,7 @@
     </div>
 
     <div class="fun_box">
-      <div class="item" @click="handleGoFunds">
+      <div class="item" v-if="$parent.getFooterType() === 'n2'" @click="handleGoFunds">
         <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/图层 6@2x.png" alt="" />
           资金明细
@@ -170,100 +170,6 @@
         <van-icon name="arrow" size="23" color="rgba(73, 81, 92, 1)" />
       </div>
     </div>
-
-    <!-- <div class="my-assets-service">
-      <div class="title">我的服务</div>
-      <div class="content">
-        <div class="item" @click="handleMyService('order')">
-          <img src="@/views/user/images/icon-商城订单@2x.png" alt="" />
-          <span>商城订单</span>
-        </div>
-        <div
-          class="item"
-          @click="handleMyService('touzi')"
-          v-if="$parent.getFooterType() === 'n2'"
-        >
-          <img src="@/views/user/images/icon-投资记录@2x.png" alt="" />
-          <span>投资记录</span>
-        </div>
-      </div>
-    </div> -->
-
-    <!-- <img class="peitu" src="@/views/user/images/配图-banner@2x.png" alt=""> -->
-
-    <!-- <div class="recommend">
-      <div class="title">推荐功能</div>
-      <div class="content">
-        <div
-          class="item"
-          v-for="(item, index) in $parent.getFooterType() === 'n2'
-            ? infoListOne
-            : infoListOne.filter(
-                (element) => ['invest', 'cost'].indexOf(element.key) === -1
-              )"
-          :key="item.key + index"
-          @click="handleMyService(item.key)"
-        >
-          <img
-            :src="
-              require(`./../../assets/images/shufeng/my/my-list-1-${
-                index + 1
-              }.png`)
-            "
-            alt=""
-          />
-          <span>{{ item.name }}</span>
-        </div>
-        <div
-          class="item"
-          v-for="(item, index) in infoListTwo"
-          :key="item.key + index"
-          @click="handleMyService(item.key)"
-        >
-          <img
-            :src="
-              require(`./../../assets/images/shufeng/my/my-list-2-${
-                index + 1
-              }.png`)
-            "
-            alt=""
-          />
-          <span>{{ item.name }}</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="other">
-      <div class="item" @click="$router.push({ name: 'about' })">
-        <img src="@/views/user/images/icon-关于我们@2x.png" alt="" />
-        <span>关于我们</span>
-        <van-icon name="arrow" color="rgba(189, 189, 189, 1)" size="16px" />
-      </div>
-      <div
-        class="item"
-        @click="$router.push({ path: config.user_contract_link })"
-      >
-        <img src="@/views/user/images/icon-服务协议@2x.png" alt="" />
-        <span>服务协议</span>
-        <van-icon name="arrow" color="rgba(189, 189, 189, 1)" size="16px" />
-      </div>
-      <div
-        class="item"
-        @click="$router.push({ path: config.user_contract_ys_link })"
-      >
-        <img src="@/views/user/images/icon-隐私协议@2x.png" alt="" />
-        <span>隐私协议</span>
-        <van-icon name="arrow" color="rgba(189, 189, 189, 1)" size="16px" />
-      </div>
-    </div> -->
-
-    <!-- <div class="other">
-      <div class="item" @click="logout">
-        <img src="@/views/user/images/icon-退出登录@2x.png" alt="" />
-        <span>退出登录</span>
-        <van-icon name="arrow" color="rgba(189, 189, 189, 1)" size="16px" />
-      </div>
-    </div> -->
   </div>
 </template>
 

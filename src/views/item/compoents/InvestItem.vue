@@ -1,7 +1,7 @@
 <template>
   <div class="project-item-container">
     <div class="project-img-box">
-      <!-- <img :src="investInfo.thumb" alt="" /> -->
+      <img :src="investInfo.thumb" alt="" />
       <div class="content">
         <div class="project-name">{{ investInfo.title }}</div>
         <div class="project-tag-box">
@@ -86,12 +86,12 @@ export default {
   .project-img-box {
     width: 100%;
     display: flex;
+    flex-direction: column;
     align-items: center;
 
     img {
-      width: 92px;
-      height: 88px;
-      margin-right: 12px;
+      width: 100%;
+      height: 160px;
     }
 
     .content {
@@ -180,7 +180,6 @@ export default {
   .project-info-list {
     display: flex;
     width: 100%;
-    background: rgba(246, 246, 246, 1);
     margin-top: 29px;
 
     &-item {
