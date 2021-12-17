@@ -14,6 +14,11 @@
       <span>公司地址：</span>
       <span>襄阳市樊城区解放路140号</span>
     </section>
+
+    <section class="item">
+      <span>官网：</span>
+      <span>www.wanheng168.com</span>
+    </section>
   </div>
 </template>
 
