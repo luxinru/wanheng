@@ -45,7 +45,7 @@
       </div>
     </div>
 
-    <!-- <div class="project-btn">立即投资</div> -->
+    <div class="project-btn">立即投资</div>
     <div class="line"></div>
   </div>
 </template>
@@ -217,7 +217,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    margin: 12px auto;
+    margin: 12px auto 0;
     font-size: 16px;
     font-family: PingFang SC-Medium, PingFang SC;
     font-weight: 500;
