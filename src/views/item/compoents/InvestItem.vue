@@ -82,7 +82,7 @@ export default {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  padding-bottom: 29px;
+  padding-bottom: 16px;
   .project-img-box {
     width: 100%;
     display: flex;
@@ -95,24 +95,26 @@ export default {
     }
 
     .content {
+      width: 100%;
       flex: 1 0;
-      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       overflow: hidden;
+      padding: 0 20px;
 
       .project-name {
+        width: 100%;
         font-size: 21px;
         font-weight: normal;
         color: #24252D;
-        margin: 16px 0 0 16px;
+        margin: 16px 0 0 0;
       }
 
       .project-tag-box {
         display: flex;
         align-items: center;
-        margin: 7px 0 0 16px;
+        margin: 7px 0 0 0;
 
         .project-tag-item {
           font-size: 13px;
