@@ -4,6 +4,7 @@
       <div class="title">
         <img src="@/assets/wanheng/首页_slices/图层 487 拷贝@2x.png" alt="" @click="$router.push('baoku')"/>
         首页
+        <img src="@/assets/wanheng/首页改_slices/矢量智能对象.png" alt="">
       </div>
 
       <div class="tree-notice-box">
