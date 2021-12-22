@@ -2,24 +2,30 @@
   <div id="app">
     <keep-alive>
       <div class="header" v-if="currentPath && title">
-        <div class="head" :style="(background ? `background: ${background};` : '') + (color ? `color: ${color};` : '')">
+        <div
+          class="head"
+          :style="
+            (background ? `background: ${background};` : '') +
+            (color ? `color: ${color};` : '')
+          "
+        >
           <div>
             <van-icon
-            name="arrow-left"
-            class="left"
-            size="23"
-            :color="color ? color : 'rgba(70, 70, 70, 1)'"
-            @click="handleBack"
-          />
+              name="arrow-left"
+              class="left"
+              size="23"
+              :color="color ? color : 'rgba(70, 70, 70, 1)'"
+              @click="handleBack"
+            />
           </div>
-          
+
           <!--<router-link :to="path" class="back"></router-link>-->
           <div>{{ title }}</div>
           <div></div>
         </div>
       </div>
     </keep-alive>
-    <div style="flex: 1 0;overflow: scroll;">
+    <div style="flex: 1 0; overflow: scroll">
       <router-view></router-view>
     </div>
     <div class="footer_nav" v-if="show_footer && footer_type === 'n2'">
@@ -65,6 +71,17 @@
             /><span>任务</span></router-link
           >
 
+          <router-link class="footer_item" to="/information">
+            <img
+              :src="
+                show_type == 'information'
+                  ? require('@/assets/wanheng/首页_slices/星球.png')
+                  : require('@/assets/wanheng/首页_slices/星球 (1).png')
+              "
+            />
+            <span :class="{ active: show_type == 'information' }">元宇宙</span>
+          </router-link>
+
           <router-link class="footer_item" to="/user"
             ><img
               :src="
@@ -98,6 +115,17 @@
               "
             /><span>任务</span></router-link
           >
+          <router-link class="footer_item" to="/information">
+            <img
+              :src="
+                show_type == 'information'
+                  ? require('@/assets/wanheng/首页_slices/星球.png')
+                  : require('@/assets/wanheng/首页_slices/星球 (1).png')
+              "
+            />
+            <span :class="{ active: show_type == 'information' }">元宇宙</span>
+          </router-link>
+
           <router-link class="footer_item" to="/user"
             ><img
               :src="
@@ -146,7 +174,7 @@ export default {
       currentPath: '/',
       idfa: '',
       background: '',
-      color: ''
+      color: '',
     }
   },
 

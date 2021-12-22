@@ -335,6 +335,23 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "home" */ './views/index/jsq.vue')
     },
+
+    {
+      path: '/information',
+      name: 'information',
+      component: () =>
+        import(/* webpackChunkName: "home" */ './views/index/information.vue')
+    },
+    {
+      path: "/information_details",
+      name: "information_details",
+      meta: {
+        title: "资讯详情"
+      },
+      component: () =>
+        import( /* webpackChunkName: "home" */ "./views/index/information_details.vue")
+    },
+    
     {
       path: '/exam',
       name: 'exam',
