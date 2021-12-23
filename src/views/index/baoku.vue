@@ -129,6 +129,7 @@ export default {
 }
 .header,
 .head {
+  height: 68px;
   background-color: rgba(0, 0, 0, 0);
   // background-color: #fff;
   border: none;

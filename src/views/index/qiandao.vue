@@ -33,6 +33,7 @@
               >连续签到:<span>{{ item.num }}天</span></span
             >
           </div>
+          <div class="btn" @click="exchangegoods(item.id)">立即领取</div>
         </div>
       </div>
     </div>
@@ -40,449 +41,449 @@
 </template>
 
 <script>
-import Fetch from "../../utils/fetch";
-import { Dialog } from "vant";
+import Fetch from '../../utils/fetch'
+import { Dialog } from 'vant'
 export default {
-  name: "index",
+  name: 'index',
   components: {},
   data() {
     return {
-      footer_type: "n1",
+      footer_type: 'n1',
       data: {
         app: {},
-        notice: "",
+        notice: '',
       },
       down_show: true,
       link_width: 0,
       banner: [],
-      notice: "",
+      notice: '',
       links: [],
-      type: "n1",
+      type: 'n1',
       ad: {},
       ad_show: false,
       examinationData: [
         {
-          id: "1",
-          name: "one",
-          question: "",
+          id: '1',
+          name: 'one',
+          question: '',
         },
       ],
       qiandaoNum: 0,
       qiandaoallNum: 0,
       countNum: 0,
       goods: [],
-    };
+    }
   },
   created() {
-    this.$parent.footer(false);
+    this.$parent.footer(false)
   },
   mounted() {
-    this.start();
-    var that = this;
-    var bslua = navigator.userAgent;
-    if (bslua.indexOf("bsl") != -1) {
-      that.down_show = false;
+    this.start()
+    var that = this
+    var bslua = navigator.userAgent
+    if (bslua.indexOf('bsl') != -1) {
+      that.down_show = false
     }
-    this.get_num();
+    this.get_num()
   },
   methods: {
     get_num() {
-      Fetch("/user/info").then(() => {
-        Fetch("/user/qiandaonum", {
+      Fetch('/user/info').then(() => {
+        Fetch('/user/qiandaonum', {
           username: this.data.username,
           password: this.data.password,
         }).then((res) => {
           (this.qiandaoNum = res.data.qdnum),
             (this.qiandaoallNum = res.data.allqdnum),
-            (this.countNum = res.data.countnum);
-        });
+            (this.countNum = res.data.countnum)
+        })
         // console.log(this.data)
-      });
+      })
     },
     getIputValue(index) {
       // console.log(index + 1 + "题" + this.radio);
-      this.allRadio[index] = this.radio[index]; // 将数据存入提交给后台的数据中
-      console.log(this.allRadio);
+      this.allRadio[index] = this.radio[index] // 将数据存入提交给后台的数据中
+      console.log(this.allRadio)
       // console.log(this.radio)
     },
-    toBox(title = "", contain = "") {
-      var newsBox = document.getElementsByClassName("modal")[0];
-      newsBox.style.display = "block";
+    toBox(title = '', contain = '') {
+      var newsBox = document.getElementsByClassName('modal')[0]
+      newsBox.style.display = 'block'
 
-      var bodyBox = document.getElementsByClassName("body-box")[0];
-      bodyBox.innerHTML = contain;
-      var newsTitle = document.getElementsByClassName("news-title")[0];
-      newsTitle.innerText = title;
+      var bodyBox = document.getElementsByClassName('body-box')[0]
+      bodyBox.innerHTML = contain
+      var newsTitle = document.getElementsByClassName('news-title')[0]
+      newsTitle.innerText = title
     },
     checkin2() {
-      Fetch("/user/sign").then((res) => {
+      Fetch('/user/sign').then((res) => {
         if (res.data.coss == 1) {
           Dialog.alert({
-            title: "提示",
+            title: '提示',
             message: res.info,
             showCancelButton: true,
-            confirmButtonText: "去认证",
+            confirmButtonText: '去认证',
           })
             .then(() => {
-              this.$router.push("/auth");
+              this.$router.push('/auth')
             })
-            .catch(() => {});
+            .catch(() => {})
         } else {
-          this.sign_money = res.data.reward;
-          this.new_sign_ok = true;
-          this.get_num();
+          this.sign_money = res.data.reward
+          this.new_sign_ok = true
+          this.get_num()
           this.$notify({
-            background: "#07c160",
-            message: "签到成功 +" + res.data.reward + "元，8积分",
-          });
+            background: '#07c160',
+            message: '签到成功 +' + res.data.reward + '元，8积分',
+          })
         }
-      });
+      })
     },
     checkin3() {
-      Fetch("/user/sign3").then((res) => {
+      Fetch('/user/sign3').then((res) => {
         if (res.data.coss == 1) {
           Dialog.alert({
-            title: "提示",
+            title: '提示',
             message: res.info,
             showCancelButton: true,
-            confirmButtonText: "去认证",
+            confirmButtonText: '去认证',
           })
             .then(() => {
-              this.$router.push("/auth");
+              this.$router.push('/auth')
             })
-            .catch(() => {});
+            .catch(() => {})
         } else {
-          this.sign_money = res.data.reward;
-          this.new_sign_ok = true;
-          this.get_num();
+          this.sign_money = res.data.reward
+          this.new_sign_ok = true
+          this.get_num()
           this.$notify({
-            background: "#07c160",
-            message: "连续签到3天送现金28元.",
-          });
+            background: '#07c160',
+            message: '连续签到3天送现金28元.',
+          })
         }
-      });
+      })
     },
     checkin7() {
-      Fetch("/user/sign7").then((res) => {
+      Fetch('/user/sign7').then((res) => {
         if (res.data.coss == 1) {
           Dialog.alert({
-            title: "提示",
+            title: '提示',
             message: res.info,
             showCancelButton: true,
-            confirmButtonText: "去认证",
+            confirmButtonText: '去认证',
           })
             .then(() => {
-              this.$router.push("/auth");
+              this.$router.push('/auth')
             })
-            .catch(() => {});
+            .catch(() => {})
         } else {
-          this.sign_money = res.data.reward;
-          this.new_sign_ok = true;
-          this.get_num();
+          this.sign_money = res.data.reward
+          this.new_sign_ok = true
+          this.get_num()
           this.$notify({
-            background: "#07c160",
-            message: "连续签到7天送现金68元.",
-          });
+            background: '#07c160',
+            message: '连续签到7天送现金68元.',
+          })
         }
-      });
+      })
     },
     closeBox() {
-      var newsBox = document.getElementsByClassName("modal")[0];
-      newsBox.style.display = "none";
+      var newsBox = document.getElementsByClassName('modal')[0]
+      newsBox.style.display = 'none'
     },
 
     appdown_close() {
-      this.data.app.is_disable = "N";
+      this.data.app.is_disable = 'N'
     },
     goAd() {
       // this.close();
       // this.$router.push(this.ad.url).catch(err => {err});
-      this.close();
-      this.$router.push(this.ad.url);
+      this.close()
+      this.$router.push(this.ad.url)
     },
     close() {
-      this.ad_show = false;
+      this.ad_show = false
     },
     start() {
       setTimeout(() => {
-        var element = document.getElementById("app");
-        element.scrollIntoView();
-      }, 0);
-      this.type = this.$parent.getFooterType();
-      Fetch("/index/int").then((res) => {
+        var element = document.getElementById('app')
+        element.scrollIntoView()
+      }, 0)
+      this.type = this.$parent.getFooterType()
+      Fetch('/index/int').then((res) => {
         console.log('resresresres', res)
-        this.ad = res.data.ad;
-        this.data = res.data;
+        this.ad = res.data.ad
+        this.data = res.data
 
         if (res.data.ad.activity_status == 1) {
-          this.ad_show = true;
+          this.ad_show = true
         } else {
-          this.ad_show = false;
+          this.ad_show = false
         }
-      });
+      })
 
       /* Fetch('/api/api/image', {type: 'links'}).then(res => {
                     this.links = res.data;
 					this.link_width = res.data.length * 23 + (res.data.length-1)*2+"%"
                 }); */
 
-      Fetch("/index/banner", {
-        type: "banner",
+      Fetch('/index/banner', {
+        type: 'banner',
       }).then((res) => {
-        this.banner = res.data;
-      });
-      Fetch("/user/qiandaogoodslist").then((res) => {
-        this.goods = res.data.list;
-      });
+        this.banner = res.data
+      })
+      Fetch('/user/qiandaogoodslist').then((res) => {
+        this.goods = res.data.list
+      })
     },
     onChange(index) {
-      let els = this.$refs.dian.querySelectorAll("div");
+      let els = this.$refs.dian.querySelectorAll('div')
       for (let i = 0; i < els.length; i++) {
-        els[i].className = "";
+        els[i].className = ''
       }
-      els[index].className = "selected";
+      els[index].className = 'selected'
     },
     schedule(schedule) {
       return {
-        width: schedule + "%",
-      };
+        width: schedule + '%',
+      }
     },
     schedule_left(schedule) {
       if (schedule > 80) {
         return {
-          left: schedule - 30 + "%",
-          color: "#fff",
-        };
+          left: schedule - 30 + '%',
+          color: '#fff',
+        }
       } else {
         return {
-          left: schedule.slice(0, 5) + "%",
-        };
+          left: schedule.slice(0, 5) + '%',
+        }
       }
     },
     exchangegoods(id = 1) {
-      Fetch("/user/qiandao", {
+      Fetch('/user/qiandao', {
         type: id,
       }).then((res) => {
         if (res.code == 1) {
           Dialog.alert({
-            title: "提示",
+            title: '提示',
             message: res.info,
             showCancelButton: false,
-            confirmButtonText: "确定",
-          });
+            confirmButtonText: '确定',
+          })
         }
-      });
+      })
     },
     handleTreeListItemClick(type = 1) {
       switch (type) {
         case 1:
-          this.checkin2();
-          break;
+          this.checkin2()
+          break
         case 2:
-          this.$router.push({ name: "scratch_card" });
-          break;
+          this.$router.push({ name: 'scratch_card' })
+          break
         case 3:
-          this.$router.push({ name: "sport_event" });
-          break;
+          this.$router.push({ name: 'sport_event' })
+          break
         case 4:
-          this.$router.push({ name: "start" });
-          break;
+          this.$router.push({ name: 'start' })
+          break
         case 5:
-          this.$router.push({ name: "prize" });
-          break;
+          this.$router.push({ name: 'prize' })
+          break
         case 6:
-          this.$router.push({ name: "goods" });
-          break;
+          this.$router.push({ name: 'goods' })
+          break
         case 7:
-          this.$router.push({ name: "item" });
-          break;
+          this.$router.push({ name: 'item' })
+          break
         case 8:
-          this.$router.push({ name: "baoku" });
-          break;
+          this.$router.push({ name: 'baoku' })
+          break
         case 9:
-          this.$router.push({ name: "index" });
-          break;
+          this.$router.push({ name: 'index' })
+          break
         case 10:
-          this.$router.push({ name: "share" });
-          break;
+          this.$router.push({ name: 'share' })
+          break
         case 11:
-          this.$router.push({ name: "heshui_event" });
-          break;
+          this.$router.push({ name: 'heshui_event' })
+          break
         case 12:
-          this.$router.push({ name: "qiandao" });
-          break;
+          this.$router.push({ name: 'qiandao' })
+          break
         case 13:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得10元话费，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得10元话费，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 17:
-          this.checkin7();
-          break;
+          this.checkin7()
+          break
         case 93:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得体重秤，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得体重秤，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 94:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得电动牙刷，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得电动牙刷，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 95:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得剃须刀，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得剃须刀，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 96:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得石化油卡2000元，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得石化油卡2000元，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 97:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得按摩椅，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得按摩椅，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 98:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得笔记本电脑，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得笔记本电脑，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 99:
           Dialog.alert({
-            title: "提示",
-            message: "您的连续签到天数不够，请继续签到！",
+            title: '提示',
+            message: '您的连续签到天数不够，请继续签到！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 100:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得宏光MINI，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得宏光MINI，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
 
         case 1003:
-          Fetch("/user/qiandao", {
-            type: "1003",
+          Fetch('/user/qiandao', {
+            type: '1003',
           }).then((res) => {
-            console.log(res.data);
-          });
+            console.log(res.data)
+          })
 
-          break;
+          break
         case 1006:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得支付宝红包，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得支付宝红包，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 10028:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得博皓电动牙刷，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得博皓电动牙刷，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 10042:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得北极绒四件套，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得北极绒四件套，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
         case 10060:
           Dialog.alert({
-            title: "提示",
-            message: "恭喜您获得五粮液，请联系客服发货！",
+            title: '提示',
+            message: '恭喜您获得五粮液，请联系客服发货！',
             showCancelButton: false,
-            confirmButtonText: "确定",
+            confirmButtonText: '确定',
           })
             .then(() => {
               // this.$router.push('/auth');
             })
-            .catch(() => {});
-          break;
+            .catch(() => {})
+          break
       }
     },
   },
-};
+}
 </script>
 
 <style lang="less" scoped>
@@ -499,14 +500,14 @@ export default {
   .title {
     font-size: 16px;
     font-weight: 500;
-    color: #ED1A23;
+    color: #ed1a23;
     margin-top: 17px;
   }
 
   .value {
     font-size: 31px;
     font-weight: 500;
-    color: #ED1A23;
+    color: #ed1a23;
     margin-top: 18px;
 
     &::after {
@@ -533,8 +534,9 @@ export default {
     justify-content: center;
     font-size: 15px;
     font-weight: 400;
-    color: #FFFFFF;
-    background: url('~@/assets/wanheng/签到_slices/矩形 6 拷贝@2x.png') no-repeat;
+    color: #ffffff;
+    background: url('~@/assets/wanheng/签到_slices/矩形 6 拷贝@2x.png')
+      no-repeat;
     background-size: 100% 100%;
     margin-top: 21px;
   }
@@ -550,7 +552,7 @@ export default {
 .headerminBox {
   width: 375px;
   height: 141px;
-  background: url("~@/assets/images/签到页_slices/标题@2x.png");
+  background: url('~@/assets/images/签到页_slices/标题@2x.png');
   background-size: 100% 100%;
 }
 
@@ -571,7 +573,7 @@ export default {
     margin-bottom: 12px;
     font-size: 18px;
     font-weight: 500;
-    color: #FFFFFF;
+    color: #ffffff;
     opacity: 0.8;
 
     span {
@@ -597,6 +599,7 @@ export default {
       width: 170px;
       display: flex;
       flex-direction: column;
+      align-items: center;
       margin-top: 12px;
 
       &:nth-child(2n) {
@@ -609,6 +612,7 @@ export default {
       }
 
       .name {
+        width: 100%;
         font-size: 16px;
         font-family: PingFang SC-Medium, PingFang SC;
         font-weight: 600;
@@ -618,6 +622,7 @@ export default {
       }
 
       .btns {
+        width: 100%;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -627,13 +632,26 @@ export default {
           font-size: 12px;
           font-family: PingFang SC-Regular, PingFang SC;
           font-weight: 400;
-          color: #FF8A35;
+          color: #ff8a35;
           line-height: 14px;
 
           span {
             margin-left: 4px;
           }
         }
+      }
+      .btn {
+        width: 84px;
+        height: 27px;
+        background: #f25132;
+        border-radius: 13px;
+        margin-top: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 11px;
+        font-weight: 400;
+        color: #ffffff;
       }
     }
   }

@@ -2,9 +2,9 @@
   <div class="tree-container">
     <div class="tree-header">
       <div class="title">
-        <img src="@/assets/wanheng/首页_slices/图层 487 拷贝@2x.png" alt="" @click="$router.push('baoku')"/>
+        <img src="@/assets/wanheng/首页_slices/图层 487 拷贝@2x.png" alt="" @click="footer_type === 'n2' ? $router.push('baoku') : ''"/>
         首页
-        <img src="@/assets/wanheng/首页改_slices/矢量智能对象.png" alt="">
+        <img src="@/assets/wanheng/首页改_slices/矢量智能对象.png" alt="" @click="$router.push('notice')">
       </div>
 
       <div class="tree-notice-box">
@@ -12,7 +12,7 @@
           background="#000000"
           color="rgba(246, 220, 161, 1)"
           left-icon="volume-o"
-          text="最新公告：关于提现功能修改上线的通知"
+          :text="data.notice"
         ></van-notice-bar>
       </div>
       <div class="tree-header-swipe">
@@ -63,29 +63,6 @@
             <span class="item_btn" style="color: rgba(144, 107, 255, 1);">立即查看</span>
           </div>
         </div>
-        <!-- <div class="left" @click="handleTreeListItemClick(3)">
-          <div class="label">运动加油站</div>
-          <div class="btn">立即开始</div>
-        </div>
-        <div class="right">
-          <div class="right_top" @click="handleTreeListItemClick(6)">
-            <div class="label">金币商城</div>
-            <div class="btn">立即兑换</div>
-          </div>
-          <div class="right_bottom" @click="handleTreeListItemClick(12)">
-            <div class="right_bottom_item">
-              <div class="label">新人认证</div>
-              <div class="btn">GO</div>
-            </div>
-            <div
-              class="right_bottom_item"
-              @click.stop="handleTreeListItemClick(11)"
-            >
-              <div class="label">关于我们</div>
-              <div class="btn">GO</div>
-            </div>
-          </div>
-        </div> -->
       </div>
     </div>
 
@@ -174,6 +151,7 @@ export default {
     } else {
       this.$parent.footer(true, "tree");
       this.$data.footer_type = "n2";
+      this.footer_type = "n2";
     }
   },
   mounted() {

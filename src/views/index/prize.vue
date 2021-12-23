@@ -319,7 +319,7 @@ export default {
     width: 305px;
     height: 305px;
     background: url('~@/assets/wanheng/转盘_slices/转盘@2x.png') no-repeat center top;
-    background-size: 100%;
+    background-size: 100% 100%;
     color: #fff;
     font-weight: 500;
     display: flex;

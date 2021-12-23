@@ -7,11 +7,12 @@
       </div>
     </div> -->
     <div class="header-cont">
-      <div>
+      <video autoplay loop src="@/views/item/mp4/IMG_0023.mp4"></video>
+      <!-- <div>
         <span>做任务 领积分红包</span>
       <span>总积分：{{ data.integral || 0 }}</span>
       </div>
-      <img src="@/assets/wanheng/01152123-04@2x.png" alt="">
+      <img src="@/assets/wanheng/01152123-04@2x.png" alt=""> -->
     </div>
     <div class="index-content">
       <div class="task-list-box">
@@ -436,6 +437,11 @@ export default {
     height: 219px;
     display: flex;
     background: RGBA(218, 133, 52, 1);
+
+    video {
+      width: 100%;
+      height: 100%;
+    }
 
     div {
       flex: 1;

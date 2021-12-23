@@ -3,7 +3,6 @@
   background-color: #fff;
   display: flex;
   flex-direction: column;
-  padding: 9px 16px;
   box-sizing: border-box;
 
   .mask {
@@ -67,6 +66,8 @@
     width: 100%;
     display: flex;
     flex-direction: column;
+    margin-top: 20px;
+    padding: 0 10px;
 
     .title {
       position: relative;
@@ -74,24 +75,18 @@
       height: 56px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: space-between;
       font-size: 19px;
       font-family: Source Han Sans CN;
       font-weight: 800;
       color: #313131;
 
       img {
-        position: absolute;
-        top: 0;
-        left: 0;
         width: 56px;
         height: 56px;
         border-radius: 50%;
 
         &:last-child {
-          position: absolute;
-          top: 0;
-          right: 0;
           width: 27px;
           height: 32px;
         }
@@ -116,10 +111,10 @@
 
     .tree-header-swipe {
       width: 100%;
-      height: 198px;
+      height: 230px;
       border-radius: 10px;
       overflow: hidden;
-      margin: 10px 0;
+      margin: 20px 0;
 
       .bannerSwp {
         width: 100%;
@@ -173,8 +168,6 @@
     background: #fff;
     display: flex;
     flex-direction: column;
-    border-radius: 17px 17px 0px 0px;
-    padding: 0 13px;
     box-sizing: border-box;
 
     .index-menu-list {
@@ -182,10 +175,11 @@
       justify-content: space-between;
       align-items: center;
       box-sizing: border-box;
+      padding: 0 10px;
 
       &-item {
         flex: 1 0;
-        height: 84px;
+        height: 100px;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -193,6 +187,7 @@
         text-align: center;
         border-radius: 10px;
         margin-left: 7px;
+        overflow: hidden;
 
         &:first-child {
           margin-left: 0;
@@ -295,7 +290,9 @@
       width: 100%;
       display: flex;
       flex-direction: column;
-      margin-top: 8px;
+      margin-top: 22px;
+      background: rgba(255, 247, 247, 1);
+      padding: 20px 10px;
 
       .piece_title {
         width: 100%;
@@ -316,7 +313,7 @@
 
       .piece_content {
         width: 100%;
-        height: 110px;
+        height: 135px;
         display: flex;
         align-items: center;
         justify-content: space-between;

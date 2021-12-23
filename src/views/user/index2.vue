@@ -122,7 +122,7 @@
     </div>
 
     <div class="fun_box">
-      <div class="item" @click="$router.push({ name: 'about' })">
+      <div class="item" v-if="$parent.getFooterType() === 'n2'" @click="$router.push({ name: 'about' })">
         <div class="left">
           <img src="@/assets/wanheng/账户余额_slices/图层 8@2x.png" alt="" />
           关于我们
@@ -131,6 +131,7 @@
       </div>
       <div
         class="item"
+        v-if="$parent.getFooterType() === 'n2'"
         @click="$router.push({ path: config.user_contract_link })"
       >
         <div class="left">
@@ -141,6 +142,7 @@
       </div>
       <div
         class="item"
+        v-if="$parent.getFooterType() === 'n2'"
         @click="$router.push({ path: config.user_contract_ys_link })"
       >
         <div class="left">

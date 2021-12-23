@@ -5,7 +5,7 @@
         background="#fff"
         color="rgba(246, 220, 161, 1)"
         left-icon="volume-o"
-        text=""
+        :text="horn_msg"
       ></van-notice-bar>
     </div>
 
@@ -37,7 +37,7 @@
     </div> -->
 
     <div class="index-head">
-      <van-swipe
+      <!-- <van-swipe
         :autoplay="5000"
         indicator-color="#fff"
         style="width: 100%; height: 100%"
@@ -47,7 +47,8 @@
             <img :src="image.thumb" />
           </a>
         </van-swipe-item>
-      </van-swipe>
+      </van-swipe> -->
+      <video autoplay loop src="@/views/item/mp4/IMG_7827.mp4"></video>
     </div>
 
     <div class="item-content-box">

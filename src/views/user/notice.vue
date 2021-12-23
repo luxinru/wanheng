@@ -19,11 +19,11 @@
         <img src="@/assets/wanheng/消息中心_slices/n_1.png" />
         <span>全部消息</span>
       </div>
-      <div @click="changeBar(1)">
+      <div v-if="$parent.getFooterType() === 'n2'" @click="changeBar(1)">
         <img src="@/assets/wanheng/消息中心_slices/n_2.png" />
         <span>收益提醒</span>
       </div>
-      <div @click="changeBar(2)">
+      <div v-if="$parent.getFooterType() === 'n2'" @click="changeBar(2)">
         <img src="@/assets/wanheng/消息中心_slices/n_3.png" />
         <span>财务通知</span>
       </div>

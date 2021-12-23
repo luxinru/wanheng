@@ -7,7 +7,7 @@
 
     <div class="apply-form-money">
       <div class="apply-form-money-input">
-        <span>+</span>
+        <!-- <span>+</span> -->
         <van-field
           v-model="money"
           @input="changeInput()"
@@ -15,7 +15,7 @@
           label-class="transaction-input"
           placeholder="请输入金额"
         />
-        <span>-</span>
+        <!-- <span>-</span> -->
       </div>
       <!-- <div class="apply-form-money-sub-title">
         {{ data.min }} 元起投，项目可投 {{ data.kt_money }} 元

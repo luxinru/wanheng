@@ -280,7 +280,7 @@ export default {
           null,
           false
         ).then((r) => {
-          this.footer_type = r.data.footer
+          this.setFooterType(r.data.footer)
           if (r.data.is_open_notice_dialog) {
             this.openNoticeDialog()
           }
@@ -328,7 +328,7 @@ export default {
   line-height: 30px;
   font-size: 12px;
   // margin-top: 24px;
-  padding-top: 15px;
+  padding: 15px 15px 0;
 
   .nav_top,
   .nav_bottom {
