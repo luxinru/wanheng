@@ -56,7 +56,7 @@
             <span class="item_info">积分免费兑换精美礼品</span>
             <span class="item_btn" style="color: #FF7354;">立即查看</span>
           </div>
-          <div class="item" @click="handleTreeListItemClick(5)">
+          <div class="item" @click="Dialog({ message: '敬请期待' })">
             <span class="item_name">幸运转盘</span>
             <span class="item_line"></span>
             <span class="item_info">现金好礼转不停</span>
@@ -163,6 +163,7 @@ export default {
     }
   },
   methods: {
+    Dialog,
     getIputValue(index) {
       // console.log(index + 1 + "题" + this.radio);
       this.allRadio[index] = this.radio[index]; // 将数据存入提交给后台的数据中

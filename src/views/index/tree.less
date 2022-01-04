@@ -75,18 +75,24 @@
       height: 56px;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      justify-content: center;
       font-size: 19px;
       font-family: Source Han Sans CN;
       font-weight: 800;
       color: #313131;
 
       img {
+        position: absolute;
         width: 56px;
         height: 56px;
         border-radius: 50%;
+        
+        &:first-child {
+          left: 0;
+        }
 
         &:last-child {
+          right: 0;
           width: 27px;
           height: 32px;
         }
