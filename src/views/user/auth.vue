@@ -38,7 +38,7 @@
     </form>
 
     <!-- <button type="submit" class="btn" v-if="data.is_auth === 'N'">确认</button> -->
-    <div class="btn" @click="handleSubmit">立即认证</div>
+    <div v-if="data.is_auth === 'N'" class="btn" @click="handleSubmit">立即认证</div>
 
     <div class="tips">
       温馨提示：请您使用本人真实姓名和证件号码，若使用第三者信息绑定导致无法提现等问题，万恒概不负责。万恒承诺严格按照《隐私政策》及国家相关法律法规，严格保护用户信息安全，请您放心使用。

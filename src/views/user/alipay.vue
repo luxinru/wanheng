@@ -20,7 +20,7 @@
           <input
             type="text"
             v-model.trim="data.name"
-            :readonly="data.is_auth === 'Y'"
+            :readonly="data.is_alipay === 'Y'"
             placeholder="请输入您的姓名"
           />
         </div>
@@ -31,13 +31,13 @@
           <input
             type="text"
             v-model.trim="data.alipay"
-            :readonly="data.is_auth === 'Y'"
+            :readonly="data.is_alipay === 'Y'"
             placeholder="请输入您的支付宝账号"
           />
         </div>
     </form>
 
-    <div class="btn" v-if="data.is_alipay !== 'N'" @click="handleSubmit">立即认证</div>
+    <div class="btn" v-if="data.is_alipay === 'N'" @click="handleSubmit">立即认证</div>
 
     <div class="tips">
       温馨提示：该绑定仅用于小额提现时系统自动转账到用户所需的支付宝账号；该绑定并非授权，不会自动扣费，请您放心使用。
