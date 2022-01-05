@@ -6,7 +6,7 @@
       <div class="my-assets-content-vipname">普通会员</div>
       <div class="my-assets-content-title">{{ data.mobile }}</div>
       <div class="my-assets-content-content">
-        <div class="item" v-if="$parent.getFooterType() === 'n2'">
+        <div class="item">
           <div class="top">账户余额</div>
           <div class="bottom">
             {{ data.money }}

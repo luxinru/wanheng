@@ -40,12 +40,12 @@
 </template>
 
 <script>
-import Vue from 'vue'
+// import Vue from 'vue'
 import Fetch from '../../utils/fetch'
-import { CountDown } from 'vant'
+// import { CountDown } from 'vant'
 import { Dialog } from 'vant'
 
-Vue.use(CountDown)
+// Vue.use(CountDown)
 
 export default {
   name: 'index',
@@ -99,7 +99,7 @@ export default {
           this.data.title = res.data.title
           this.data.values = res.data.values
           this.data.images = res.data.image
-          this.$refs.countDown.reset()
+          // this.$refs.countDown.reset()
           Dialog.alert({
             message: (res.data.status = res.info)
           })
@@ -107,7 +107,6 @@ export default {
       })
     },
     apply (key, event) {
-      this.setStyle()
       event.target.style.background = 'rgba(210, 81, 49, 1)'
       event.target.style.color = 'rgba(255, 255, 255, 1)'
       this.stop(key)
@@ -120,17 +119,19 @@ export default {
     },
     stop (key = 0) {
       let id = this.data.askid
-      this.$refs.countDown.pause()
+      // this.$refs.countDown.pause()
       Fetch('/index/getask', { id: id, key: key }).then(res => {
         this.data.askid = res.data.id
         this.data.title = res.data.title
         this.data.values = res.data.values
         this.data.images = res.data.image
-        this.$refs.countDown.reset()
+        // this.$refs.countDown.reset()
         Dialog.alert({
           message: (res.data.status = res.info)
         })
+        this.setStyle()
       })
+      
     }
   }
 }
