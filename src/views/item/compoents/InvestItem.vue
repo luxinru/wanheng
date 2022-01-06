@@ -19,15 +19,6 @@
       </div>
     </div>
 
-    <!-- <div class="project-progress-warp">
-      <div class="project-progress-box">
-        <div
-          class="project-progress"
-          :style="schedule(investInfo.schedule)"
-        ></div>
-      </div>
-    </div> -->
-
     <div class="project-info-list">
       <div class="project-info-list-item">
         <div class="project-info-list-item-bottom one-bottom">日利率</div>
@@ -42,6 +33,15 @@
         <div class="project-info-list-item-top">
           {{ investInfo.sun_apr_money }}
         </div>
+      </div>
+    </div>
+
+    <div class="project-progress-warp">
+      <div class="project-progress-box">
+        <div
+          class="project-progress"
+          :style="schedule(investInfo.schedule)"
+        ></div>
       </div>
     </div>
 
@@ -156,7 +156,7 @@ export default {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 12px 0;
+    margin: 12px 12px 0;
     .project-progress-box {
       flex: 1;
       height: 6px;
@@ -167,7 +167,7 @@ export default {
       .project-progress {
         height: 4px;
         border-radius: 4px;
-        background-color: rgba(18, 186, 105, 1);
+        background-color: #ff8a35;
       }
     }
     .progress-value {
