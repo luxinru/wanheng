@@ -7,15 +7,16 @@
 
     <div class="apply-form-money">
       <div class="apply-form-money-input">
-        <!-- <span>+</span> -->
+        <span @click="setNum(Number(data.min))">+</span>
         <van-field
           v-model="money"
+          readonly
           @input="changeInput()"
-          type="text"
+          type="number"
           label-class="transaction-input"
           placeholder="请输入金额"
         />
-        <!-- <span>-</span> -->
+        <span @click="setNum(Number(data.min), 2)">-</span>
       </div>
       <!-- <div class="apply-form-money-sub-title">
         {{ data.min }} 元起投，项目可投 {{ data.kt_money }} 元
@@ -163,15 +164,20 @@ export default {
     this.start();
   },
   methods: {
-    setNum(num) {
-      this.money = Number(this.money) + num;
+    setNum(num, type = 1) {
+      if (type === 1) {
+        this.money = Number(this.money) + num;
+      } else {
+        this.money = Number(this.money) - num;
+      }
+      this.changeInput()
     },
     start() {
       Fetch("/index/item_view", {
         id: this.id,
       }).then((res) => {
         this.data = res.data.view;
-        this.money = res.data.view.min;
+        this.money = Number(res.data.view.min)
         Fetch("/user/get_item_voucher", {
           id: this.id,
         }).then((r) => {
@@ -218,7 +224,7 @@ export default {
         this.real_money = this.money - this.j_money;
         this.real_jifen = Math.floor(this.money * this.data.jfbl);
       } else {
-        this.money += this.data.min;
+        this.money = Number(this.data.min);
       }
     },
     // 忘记密码
